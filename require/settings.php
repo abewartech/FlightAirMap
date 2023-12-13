@@ -1,6 +1,6 @@
 <?php
 //INSTALLED OR NOT ?
-$globalInstalled = TRUE;
+$globalInstalled = FALSE;
 
 //GLOBAL SITE NAME
 $globalName = 'flightair';
