@@ -4,7 +4,7 @@ require_once('require/class.Spotter.php');
 require_once('require/class.Language.php');
 require_once('require/class.Satellite.php');
 
-$trackident = filter_input(INPUT_GET,'trackid',FILTER_SANITIZE_STRING);
+$trackident = filter_input(INPUT_GET,'trackid',513);
 if ($trackident != '') {
 	require_once('require/class.SpotterLive.php');
 	$SpotterLive = new SpotterLive();

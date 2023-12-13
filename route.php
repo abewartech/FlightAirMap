@@ -5,8 +5,8 @@ require_once('require/class.Language.php');
 
 if (isset($_POST['departure_airport']) && $_POST['departure_airport'] != '')
 {
-	$departure_airport = filter_input(INPUT_POST,'departure_airport',FILTER_SANITIZE_STRING);
-	$arrival_airport = filter_input(INPUT_POST,'arrival_airport',FILTER_SANITIZE_STRING);
+	$departure_airport = filter_input(INPUT_POST,'departure_airport',513);
+	$arrival_airport = filter_input(INPUT_POST,'arrival_airport',513);
 	header('Location: '.$globalURL.'/route/'.$departure_airport.'/'.$arrival_airport);
 } else {
 	if ($globalURL == '') {

@@ -39,10 +39,10 @@ var layer_marine_data = L.layerGroup();
 
 <?php
 	if (isset($_GET['fammarine_id'])) {
-		$fammarine_id = filter_input(INPUT_GET,'fammarine_id',FILTER_SANITIZE_STRING);
+		$fammarine_id = filter_input(INPUT_GET,'fammarine_id',513);
 	}
 	if (isset($_GET['ident'])) {
-		$ident = filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING);
+		$ident = filter_input(INPUT_GET,'ident',513);
 	}
 	if (!isset($ident) && !isset($fammarine_id)) {
 ?>

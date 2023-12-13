@@ -1,12 +1,12 @@
 <?php
 //INSTALLED OR NOT ?
-$globalInstalled = FALSE;
+$globalInstalled = TRUE;
 
 //GLOBAL SITE NAME
-$globalName = '';
+$globalName = 'flightair';
 
 // GLOBAL URL
-$globalURL = '';
+$globalURL = 'http://localhost:8080';
 
 // Logo URL
 $logoURL = '/images/logo2.png';
@@ -20,13 +20,13 @@ $globalLanguage = 'EN'; // Used only for wikipedia links for now
 // MAP PROVIDER
 $globalMapProvider = 'OpenStreetMap'; // Can be Mapbox, OpenStreetMap, MapQuest-OSM or MapQuest-Aerial
 $globalMapboxId = 'examples.map-i86nkdio'; // Mapbox id
-$globalMapboxToken = ''; // Mapbox token
-$globalGoogleAPIKey = '';
+$globalMapboxToken = 'pk.eyJ1IjoiYWJld2FydGVjaCIsImEiOiJja3I1dHl1c20zOHY4Mm90OXNqeWRkZGNnIn0.O1VdGuE2bxcQbBdt9uyEKQ'; // Mapbox token
+$globalGoogleAPIKey = 'AIzaSyCtTw21uoPWMWZ9008PoshYg31D5H5n4Wo';
 $globalBingMapKey = '';
 $globalHereappID = '';
 $globalHereappCode = '';
 $globalMapQuestKey = '';
-$globalOpenWeatherMapKey = '';
+$globalOpenWeatherMapKey = '6b33f16dae3587630c60ee15fcb0b4e4';
 // Customs layers source must be configured this way:
 //$globalMapCustomLayer = array('custom' => array('url' => 'http://myownserver','maxZoom' => 18, 'minZoom' => 0,'attribution' => 'MySelf'));
 
@@ -43,13 +43,13 @@ $globalMap3DOneModel = FALSE; // Use same model for all aircrafts
 $globalMap3DShadows = TRUE; // Enable sun shadow on 3D mode
 
 //COVERAGE AREA (its based on a box model. i.e. top-left | top-right | bottom-right | bottom-left)
-$globalLatitudeMax = '46.92'; //the maximum latitude (north)
-$globalLatitudeMin = '42.14'; //the minimum latitude (south)
-$globalLongitudeMax = '6.2'; //the maximum longitude (west)
-$globalLongitudeMin = '1.0'; //the minimum longitude (east)
+$globalLatitudeMax = '-6'; //the maximum latitude (north)
+$globalLatitudeMin = '-8'; //the minimum latitude (south)
+$globalLongitudeMax = '108'; //the maximum longitude (west)
+$globalLongitudeMin = '108'; //the minimum longitude (east)
 
-$globalCenterLatitude = '46.38'; //the latitude center of your coverage area
-$globalCenterLongitude = '5.29';//the longitude center of your coverage area
+$globalCenterLatitude = '-6'; //the latitude center of your coverage area
+$globalCenterLongitude = '108';//the longitude center of your coverage area
 
 $globalLiveZoom = '9'; //default zoom on Live Map
 $globalAirportZoom = '7'; //default zoom to begin to display airports icons
@@ -61,16 +61,16 @@ $globalDistanceIgnore = array();
 // DATABASE CONNECTION LOGIN
 $globalDBdriver = 'mysql'; // PDO driver used. Tested with mysql, maybe pgsql or others work...
 $globalDBhost = 'localhost'; //database connection url
-$globalDBuser = ''; //database username
+$globalDBuser = 'root'; //database username
 $globalDBpass = ''; //database password
-$globalDBname = ''; //database name
+$globalDBname = 'flightair'; //database name
 $globalDBport = '3306'; //database port
 $globalTransaction = TRUE; //Activate database transaction support
 
 
 //FLIGHTAWARE API INFO (not supported)
 $globalFlightAware = FALSE; //set to TRUE to use FlightAware as data import
-$globalFlightAwareUsername = ''; //FlightAware Username
+$globalFlightAwareUsername = 'root'; //FlightAware Username
 $globalFlightAwarePassword = ''; //FlightAware Password/API key
 
 // TIMEZONE
@@ -81,7 +81,7 @@ $globalDaemon = TRUE; // Run cron-sbs.php as daemon (don't work well if source i
 $globalCronEnd = '0'; //the script run for xx seconds if $globalDaemon is disable in SBS mode
 
 // FORK
-$globalFork = TRUE; // Allow cron-sbs.php to fork to fetch schedule, no more schedules fetch if set to FALSE
+$globalFork = FALSE; // Allow cron-sbs.php to fork to fetch schedule, no more schedules fetch if set to FALSE
 
 // MINIMUM TIME BETWEEN UPDATES FOR HTTP SOURCES (in seconds)
 $globalMinFetch = '50';
@@ -181,7 +181,7 @@ $globalSourcesTimeOut = '15';
 $globalSourcesupdate = '10'; //Put data in DB after xx seconds/flight
 
 //DATA SOURCES
-$globalSources = array(array('host' => '127.0.0.1', 'port' => '30003'));
+$globalSources = array(array('host' => '127.0.0.1','port' => '30003','name' => '','format' => 'auto','sourcestats' => FALSE,'noarchive' => FALSE,'timezone' => 'UTC','callback' => FALSE));
 // ^^ in the form array(array(host => 'host1', 'port' => 'port1','name' => 'first source','format' => 'sbs'),array('host' => 'host2', 'port' => 'port2','name' => 'Other source', 'format' => 'aprs'),array('host' => 'http://xxxxx/whazzup.txt'),array('host' => '123.123.123.123', 'name' => 'external', 'callback' => TRUE,'format' => 'hidnseek')); Use only sources you have the rights for.
 
 //ACARS Listen in UDP
@@ -214,7 +214,7 @@ $globalBitlyAccessToken = ''; //the access token from the bit.ly API
 $globalBritishAirwaysKey = '';
 
 // Lufhansa API info
-$globalLufthansaKey = '';
+$globalLufthansaKey = array('key' => '','secret' => '');
 
 // Transavia API info
 $globalTransaviaKey = '';
@@ -260,7 +260,7 @@ $globalArchiveKeepMonths = '0';
 // ************************
 
 // Reset stats every year
-$globalDeleteLastYearStats = TRUE;
+$globalDeleteLastYearStats = FALSE;
 
 //Calculate height of the geoid above the WGS84 ellipsoid (for source that give altitude based on AMSL)
 $globalGeoid = TRUE;
@@ -345,9 +345,9 @@ $globalGroundAltitude = FALSE;
 
 // ****** MODES *****
 // Aircraft Mode
-$globalAircraft = TRUE;
+$globalAircraft = FALSE;
 // Marine Mode
-$globalMarine = FALSE;
+$globalMarine = TRUE;
 // Tracker Mode
 $globalTracker = FALSE;
 // Satellite Mode
@@ -367,4 +367,26 @@ $globalNewsFeeds = array();
 
 // Get result from archive table for search
 $globalArchiveResults = TRUE;
+
+$globalInstallPassword = 'root';
+
+$globalDisableUpdateCheck = FALSE;
+
+$globalSailaway = array('email' => '','password' => '','key' => '');
+
+$globalPODACCuser = '';
+
+$globalPODACCpass = '';
+
+$globalMapSatellites = FALSE;
+
+$globalMarineIconColor = '43d1d8';
+
+$globalTrackerIconColor = '1a3151';
+
+$globalSatelliteIconColor = '1a3151';
+
+$globalCORSproxy = 'https://galvanize-cors-proxy.herokuapp.com/';
+
+$globalMap3DSelected = FALSE;
 ?>

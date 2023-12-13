@@ -6,7 +6,7 @@ require_once('require/class.METAR.php');
 $Spotter = new Spotter();
 
 if (isset($_GET['airport_icao'])) {
-	$icao = filter_input(INPUT_GET,'airport_icao',FILTER_SANITIZE_STRING);
+	$icao = filter_input(INPUT_GET,'airport_icao',513);
 	$spotter_array = $Spotter->getAllAirportInfo($icao);
 	if (isset($globalMETAR) && $globalMETAR) {
 		$METAR = new METAR();

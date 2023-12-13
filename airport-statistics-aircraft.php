@@ -9,7 +9,7 @@ if (!isset($_GET['airport'])) {
 }
 $Spotter = new Spotter();
 
-$airport = filter_input(INPUT_GET,'airport',FILTER_SANITIZE_STRING);
+$airport = filter_input(INPUT_GET,'airport',513);
 $airport_array = $Spotter->getAllAirportInfo($airport);
 
 if (!empty($airport_array))

@@ -10,7 +10,7 @@ if (!isset($_GET['date']))
 {
 	$date = date('Y-m-d');
 } else {
-	$date = filter_input(INPUT_GET,'date',FILTER_SANITIZE_STRING);
+	$date = filter_input(INPUT_GET,'date',513);
 }
 
 if(!isset($_GET['limit']))

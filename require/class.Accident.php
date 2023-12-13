@@ -47,7 +47,7 @@ class Accident {
 		$Image = new Image($this->db);
 		$Spotter = new Spotter($this->db);
 		$Translation = new Translation($this->db);
-		$date = filter_var($date,FILTER_SANITIZE_STRING);
+		$date = filter_var($date,513);
 		date_default_timezone_set('UTC');
 		$result = array();
 		$limit_query = '';

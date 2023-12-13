@@ -26,8 +26,8 @@ if (!isset($_GET['registration'])){
 	$limit_next = $limit_end + $absolute_difference;
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
-	$registration = filter_input(INPUT_GET,'registration',FILTER_SANITIZE_STRING);
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$registration = filter_input(INPUT_GET,'registration',513);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	
 	$page_url = $globalURL.'/registration/'.$registration;
 	

@@ -9,8 +9,8 @@ if (!isset($_GET['owner'])) {
 }
 $Spotter = new Spotter();
 $SpotterArchive = new SpotterArchive();
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
-$owner = urldecode(filter_input(INPUT_GET,'owner',FILTER_SANITIZE_STRING));
+$sort = filter_input(INPUT_GET,'sort',513);
+$owner = urldecode(filter_input(INPUT_GET,'owner',513));
 $year = filter_input(INPUT_GET,'year',FILTER_SANITIZE_NUMBER_INT);
 $month = filter_input(INPUT_GET,'month',FILTER_SANITIZE_NUMBER_INT);
 $filter = array();

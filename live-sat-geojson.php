@@ -13,7 +13,7 @@ if (isset($_GET['download'])) {
 		header('Content-disposition: attachment; filename="flightairmap-sat.json"');
 	}
 }
-$history = urldecode(filter_input(INPUT_GET,'history',FILTER_SANITIZE_STRING));
+$history = urldecode(filter_input(INPUT_GET,'history',513));
 header('Content-Type: text/javascript');
 
 $begintime = microtime(true);

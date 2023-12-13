@@ -641,16 +641,16 @@ class Tracker{
 			$date = date("Y-m-d H:i:s", time());
 		}
 
-		$famtrackid = filter_var($famtrackid,FILTER_SANITIZE_STRING);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
+		$famtrackid = filter_var($famtrackid,513);
+		$ident = filter_var($ident,513);
 		$latitude = filter_var($latitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$longitude = filter_var($longitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$altitude = filter_var($altitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$heading = filter_var($heading,FILTER_SANITIZE_NUMBER_INT);
 		$groundspeed = filter_var($groundspeed,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-		$format_source = filter_var($format_source,FILTER_SANITIZE_STRING);
-		$comment = filter_var($comment,FILTER_SANITIZE_STRING);
-		$type = filter_var($type,FILTER_SANITIZE_STRING);
+		$format_source = filter_var($format_source,513);
+		$comment = filter_var($comment,513);
+		$type = filter_var($type,513);
 	
                 if ($latitude == '' && $longitude == '') {
             		$latitude = 0;
@@ -730,7 +730,7 @@ class Tracker{
 			} else {
 				$q_array = explode(" ", $q);
 				foreach ($q_array as $q_item){
-					$q_item = filter_var($q_item,FILTER_SANITIZE_STRING);
+					$q_item = filter_var($q_item,513);
 					$additional_query .= " AND (";
 					$additional_query .= "(tracker_output.ident like '%".$q_item."%')";
 					$additional_query .= ")";
@@ -1220,7 +1220,7 @@ class Tracker{
 	{
 		global $globalTimezone, $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$date = filter_var($date,FILTER_SANITIZE_STRING);
+		$date = filter_var($date,513);
 		if ($globalTimezone != '') {
 			date_default_timezone_set($globalTimezone);
 			$datetime = new DateTime($date);
@@ -1268,7 +1268,7 @@ class Tracker{
 	{
 		global $globalTimezone, $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident,513);
 		if ($globalTimezone != '') {
 			date_default_timezone_set($globalTimezone);
 			$datetime = new DateTime();
@@ -1441,7 +1441,7 @@ class Tracker{
      */
 	public function getTrackerIDBasedOnFamTrackID($famtrackid)
 	{
-		$famtrackid = filter_var($famtrackid,FILTER_SANITIZE_STRING);
+		$famtrackid = filter_var($famtrackid,513);
 
 		$query  = "SELECT tracker_output.tracker_id
 				FROM tracker_output 
@@ -1623,7 +1623,7 @@ class Tracker{
 	public function getCountryFromISO2($iso2)
 	{
 		global $globalDebug;
-		$iso2 = filter_var($iso2,FILTER_SANITIZE_STRING);
+		$iso2 = filter_var($iso2,513);
 	
 		$Connection = new Connection($this->db);
 		if (!$Connection->tableExists('countries')) return '';
@@ -1751,7 +1751,7 @@ class Tracker{
 			} else {
 				$q_array = explode(" ", $q);
 				foreach ($q_array as $q_item){
-					$q_item = filter_var($q_item,FILTER_SANITIZE_STRING);
+					$q_item = filter_var($q_item,513);
 					$additional_query .= " AND (";
 					if (is_int($q_item)) $additional_query .= "(tracker_output.tracker_id = '".$q_item."') OR ";
 					$additional_query .= "(tracker_output.ident like '%".$q_item."%') OR ";
@@ -1761,7 +1761,7 @@ class Tracker{
 		}
 		if ($callsign != "")
 		{
-			$callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
+			$callsign = filter_var($callsign,513);
 			if (!is_string($callsign))
 			{
 				return array();
@@ -1773,8 +1773,8 @@ class Tracker{
 		if ($date_posted != "")
 		{
 			$date_array = explode(",", $date_posted);
-			$date_array[0] = filter_var($date_array[0],FILTER_SANITIZE_STRING);
-			$date_array[1] = filter_var($date_array[1],FILTER_SANITIZE_STRING);
+			$date_array[0] = filter_var($date_array[0],513);
+			$date_array[1] = filter_var($date_array[1],513);
 			if ($globalTimezone != '') {
 				date_default_timezone_set($globalTimezone);
 				$datetime = new DateTime();

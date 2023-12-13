@@ -28,10 +28,10 @@ if (!isset($_GET['airline'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$airline = urldecode(filter_input(INPUT_GET,'airline',FILTER_SANITIZE_STRING));
+	$airline = urldecode(filter_input(INPUT_GET,'airline',513));
 	$page_url = $globalURL.'/airline/'.$airline;
 	$alliance = false;
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	$airline_info = array();
 	if (strpos($airline,'alliance_') !== FALSE) {
 		$spotter_array = $Spotter->getSpotterDataByAirline('',$limit_start.",".$absolute_difference, $sort,array('alliance' => str_replace('_',' ',str_replace('alliance_','',$airline))));

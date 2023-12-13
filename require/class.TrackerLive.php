@@ -471,7 +471,7 @@ class TrackerLive {
 		$Tracker = new Tracker($this->db);
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT tracker_live.* FROM tracker_live INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_live l WHERE l.ident = :ident GROUP BY l.famtrackid) s on tracker_live.famtrackid = s.famtrackid AND tracker_live.date = s.maxdate ORDER BY tracker_live.date DESC';
 
 		$spotter_array = $Tracker->getDataFromDB($query,array(':ident' => $ident),'',true);
@@ -491,7 +491,7 @@ class TrackerLive {
 		$Tracker = new Tracker($this->db);
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT tracker_live.* FROM tracker_live INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_live l WHERE l.ident = :ident AND l.date <= :date GROUP BY l.famtrackid) s on tracker_live.famtrackid = s.famtrackid AND tracker_live.date = s.maxdate ORDER BY tracker_live.date DESC';
 
                 $date = date('c',$date);
@@ -511,7 +511,7 @@ class TrackerLive {
 		$Tracker = new Tracker($this->db);
 		date_default_timezone_set('UTC');
 
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
                 $query  = 'SELECT tracker_live.* FROM tracker_live INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_live l WHERE l.famtrackid = :id GROUP BY l.famtrackid) s on tracker_live.famtrackid = s.famtrackid AND tracker_live.date = s.maxdate ORDER BY tracker_live.date DESC';
 
 		$spotter_array = $Tracker->getDataFromDB($query,array(':id' => $id),'',true);
@@ -531,7 +531,7 @@ class TrackerLive {
 		$Tracker = new Tracker($this->db);
 		date_default_timezone_set('UTC');
 
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
                 $query  = 'SELECT tracker_live.* FROM tracker_live INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_live l WHERE l.famtrackid = :id AND l.date <= :date GROUP BY l.famtrackid) s on tracker_live.famtrackid = s.famtrackid AND tracker_live.date = s.maxdate ORDER BY tracker_live.date DESC';
                 $date = date('c',$date);
 		$spotter_array = $Tracker->getDataFromDB($query,array(':id' => $id,':date' => $date),'',true);
@@ -550,7 +550,7 @@ class TrackerLive {
 
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT tracker_live.altitude, tracker_live.date FROM tracker_live WHERE tracker_live.ident = :ident';
 
     		try {
@@ -577,7 +577,7 @@ class TrackerLive {
 	{
 		global $globalDBdriver, $globalLiveInterval;
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		//$query  = self::$global_query.' WHERE tracker_live.famtrackid = :id ORDER BY date';
 		if ($globalDBdriver == 'mysql') {
 			$query = 'SELECT tracker_live.* FROM tracker_live WHERE tracker_live.famtrackid = :id';
@@ -611,7 +611,7 @@ class TrackerLive {
 	public function getAllLiveTrackerDataByIdent($ident)
 	{
 		date_default_timezone_set('UTC');
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = self::$global_query.' WHERE tracker_live.ident = :ident';
     		try {
 			
@@ -760,7 +760,7 @@ class TrackerLive {
      */
 	public function deleteLiveTrackerDataByIdent($ident)
 	{
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = 'DELETE FROM tracker_live WHERE ident = :ident';
         
     		try {
@@ -782,7 +782,7 @@ class TrackerLive {
      */
 	public function deleteLiveTrackerDataById($id)
 	{
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = 'DELETE FROM tracker_live WHERE famtrackid = :id';
         
     		try {
@@ -975,18 +975,18 @@ class TrackerLive {
 		if ($date == '') $date = date("Y-m-d H:i:s", time());
 
         
-		$famtrackid = filter_var($famtrackid,FILTER_SANITIZE_STRING);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
+		$famtrackid = filter_var($famtrackid,513);
+		$ident = filter_var($ident,513);
 		$latitude = filter_var($latitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$longitude = filter_var($longitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$altitude = filter_var($altitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$heading = filter_var($heading,FILTER_SANITIZE_NUMBER_INT);
 		$groundspeed = filter_var($groundspeed,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-		$format_source = filter_var($format_source,FILTER_SANITIZE_STRING);
-		$source_name = filter_var($source_name,FILTER_SANITIZE_STRING);
-		$over_country = filter_var($over_country,FILTER_SANITIZE_STRING);
-		$comment = filter_var($comment,FILTER_SANITIZE_STRING);
-		$type = filter_var($type,FILTER_SANITIZE_STRING);
+		$format_source = filter_var($format_source,513);
+		$source_name = filter_var($source_name,513);
+		$over_country = filter_var($over_country,513);
+		$comment = filter_var($comment,513);
+		$type = filter_var($type,513);
 
             	if ($groundspeed == '' || $Common->isInteger($groundspeed) === false ) $groundspeed = 0;
             	if ($heading == '' || $Common->isInteger($heading) === false ) $heading = 0;

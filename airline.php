@@ -8,7 +8,7 @@ require_once('require/class.Stats.php');
 
 if (isset($_POST['airline']))
 {
-	header('Location: '.$globalURL.'/airline/'.filter_input(INPUT_POST,'airline',FILTER_SANITIZE_STRING));
+	header('Location: '.$globalURL.'/airline/'.filter_input(INPUT_POST,'airline',513));
 } else {
 	$title = "Airlines";
 	require_once('header.php');
@@ -17,7 +17,7 @@ if (isset($_POST['airline']))
 	print '<div class="column">';
 	print '<h1>'._("Airlines").'</h1>';
 	if (isset($_POST['airline_type'])) {
-		$airline_type = filter_input(INPUT_POST,'airline_type',FILTER_SANITIZE_STRING);
+		$airline_type = filter_input(INPUT_POST,'airline_type',513);
 		//$airline_names = $Spotter->getAllAirlineNames($airline_type);
 	} else {
 		//$airline_names = $Spotter->getAllAirlineNames();
@@ -55,7 +55,7 @@ if (isset($_POST['airline']))
 	$Stats = new Stats();
 	if (isset($_POST['airline_type'])) 
 	{
-		$airline_type = filter_input(INPUT_POST,'airline_type',FILTER_SANITIZE_STRING);
+		$airline_type = filter_input(INPUT_POST,'airline_type',513);
 		//$airline_names = $Stats->getAllAirlineNames($airline_type);
 		$airline_names = $Spotter->getAllAirlineNames($airline_type);
 	} else {

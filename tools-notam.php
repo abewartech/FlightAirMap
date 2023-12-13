@@ -10,7 +10,7 @@ require_once('header.php');
 
 $page_url = $globalURL.'/tools-notam';
 
-$message = filter_input(INPUT_POST,'notam_message',FILTER_SANITIZE_STRING);
+$message = filter_input(INPUT_POST,'notam_message',513);
 
 print '<div class="info column">';
 print '<h1>'._("Parse NOTAM messages").'</h1>';

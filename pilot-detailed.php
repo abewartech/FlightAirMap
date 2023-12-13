@@ -32,8 +32,8 @@ if (!isset($_GET['pilot'])){
 	
 	$page_url = $globalURL.'/pilot/'.$_GET['pilot'];
 	
-	$pilot = filter_input(INPUT_GET,'pilot',FILTER_SANITIZE_STRING);
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$pilot = filter_input(INPUT_GET,'pilot',513);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	$year = filter_input(INPUT_GET,'year',FILTER_SANITIZE_NUMBER_INT);
 	$month = filter_input(INPUT_GET,'month',FILTER_SANITIZE_NUMBER_INT);
 	$filter = array();

@@ -27,10 +27,10 @@ var layer_satellite_data = L.layerGroup();
 
 <?php
 	if (isset($_GET['famsatid'])) {
-		$famsatid = filter_input(INPUT_GET,'famsatid',FILTER_SANITIZE_STRING);
+		$famsatid = filter_input(INPUT_GET,'famsatid',513);
 	}
 	if (isset($_GET['ident'])) {
-		$ident = filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING);
+		$ident = filter_input(INPUT_GET,'ident',513);
 	}
 	if (!isset($ident) && !isset($famsatid)) {
 ?>

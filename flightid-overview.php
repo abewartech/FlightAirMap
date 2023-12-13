@@ -1,5 +1,5 @@
 <?php
-$id = filter_input(INPUT_GET,'id',FILTER_SANITIZE_STRING);
+$id = filter_input(INPUT_GET,'id',513);
 if ($id == "")
 {
 	header('Location: /');

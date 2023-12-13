@@ -35,7 +35,7 @@ print '</div>';
 print '<div class="table column">';	
 print '<p>'._("This page shows all upcoming flights within the next 3 hours calculated using historical data, based on the number of same flights on the current day of the week &amp; current time. This does not take into account real-time delays and other factors.").'</p>';
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 if ($sort != '') {
 	$spotter_array = $Spotter->getUpcomingFlights($limit_start.",".$absolute_difference, $sort);
 } else {

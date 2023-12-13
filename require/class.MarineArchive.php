@@ -160,7 +160,7 @@ class MarineArchive {
 	    $Marine = new Marine($this->db);
         date_default_timezone_set('UTC');
 
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         //$query  = "SELECT marine_archive.* FROM marine_archive INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_archive l WHERE l.ident = :ident GROUP BY l.fammarine_id) s on marine_archive.fammarine_id = s.fammarine_id AND marine_archive.date = s.maxdate LIMIT 1";
         $query  = "SELECT marine_archive.* FROM marine_archive WHERE ident = :ident ORDER BY date DESC LIMIT 1";
         $spotter_array = $Marine->getDataFromDB($query,array(':ident' => $ident));
@@ -178,7 +178,7 @@ class MarineArchive {
     {
         $Marine = new Marine($this->db);
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         //$query  = MarineArchive->$global_query." WHERE marine_archive.fammarine_id = :id";
         //$query  = "SELECT marine_archive.* FROM marine_archive INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_archive l WHERE l.fammarine_id = :id GROUP BY l.fammarine_id) s on marine_archive.fammarine_id = s.fammarine_id AND marine_archive.date = s.maxdate LIMIT 1";
         $query  = "SELECT * FROM marine_archive WHERE fammarine_id = :id ORDER BY date DESC LIMIT 1";
@@ -207,7 +207,7 @@ class MarineArchive {
     public function getAllArchiveMarineDataById($id)
 	{
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = $this->global_query." WHERE marine_archive.fammarine_id = :id ORDER BY date";
 
 //              $spotter_array = Marine->getDataFromDB($query,array(':id' => $id));
@@ -232,7 +232,7 @@ class MarineArchive {
     public function getCoordArchiveMarineDataById($id)
     {
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = "SELECT marine_archive.latitude, marine_archive.longitude, marine_archive.date FROM marine_archive WHERE marine_archive.fammarine_id = :id";
 
 //              $spotter_array = Marine->getDataFromDB($query,array(':id' => $id));
@@ -261,7 +261,7 @@ class MarineArchive {
 
         date_default_timezone_set('UTC');
 
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT marine_archive.altitude, marine_archive.date FROM marine_archive WHERE marine_archive.ident = :ident AND marine_archive.latitude <> 0 AND marine_archive.longitude <> 0 ORDER BY date";
 
         try {
@@ -287,7 +287,7 @@ class MarineArchive {
 
         date_default_timezone_set('UTC');
 
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = "SELECT marine_archive.altitude, marine_archive.date FROM marine_archive WHERE marine_archive.fammarine_id = :id AND marine_archive.latitude <> 0 AND marine_archive.longitude <> 0 ORDER BY date";
 
         try {
@@ -312,7 +312,7 @@ class MarineArchive {
     {
         date_default_timezone_set('UTC');
 
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = "SELECT marine_archive.altitude, marine_archive.ground_speed, marine_archive.date FROM marine_archive WHERE marine_archive.fammarine_id = :id ORDER BY date";
 
         try {
@@ -339,7 +339,7 @@ class MarineArchive {
 
         date_default_timezone_set('UTC');
 
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT marine_archive.altitude, marine_archive.date FROM marine_archive INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_archive l WHERE l.ident = :ident GROUP BY l.fammarine_id) s on marine_archive.fammarine_id = s.fammarine_id AND marine_archive.date = s.maxdate LIMIT 1";
 //                $query  = "SELECT marine_archive.altitude, marine_archive.date FROM marine_archive WHERE marine_archive.ident = :ident";
 
@@ -367,7 +367,7 @@ class MarineArchive {
     public function getMarineArchiveData($ident,$fammarine_id,$date)
     {
         $Marine = new Marine($this->db);
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM spotter_live l WHERE l.ident = :ident AND l.fammarine_id = :fammarine_id AND l.date LIKE :date GROUP BY l.fammarine_id) s on spotter_live.fammarine_id = s.fammarine_id AND spotter_live.date = s.maxdate";
         $spotter_array = $Marine->getDataFromDB($query,array(':ident' => $ident,':fammarine_id' => $fammarine_id,':date' => $date.'%'));
         return $spotter_array;
@@ -670,7 +670,7 @@ class MarineArchive {
 	
         if ($registration != "")
         {
-            $registration = filter_var($registration,FILTER_SANITIZE_STRING);
+            $registration = filter_var($registration,513);
             if (!is_string($registration))
             {
                 return array();
@@ -681,7 +681,7 @@ class MarineArchive {
 	
         if ($aircraft_icao != "")
         {
-            $aircraft_icao = filter_var($aircraft_icao,FILTER_SANITIZE_STRING);
+            $aircraft_icao = filter_var($aircraft_icao,513);
             if (!is_string($aircraft_icao))
             {
                 return array();
@@ -692,7 +692,7 @@ class MarineArchive {
 	
         if ($aircraft_manufacturer != "")
         {
-            $aircraft_manufacturer = filter_var($aircraft_manufacturer,FILTER_SANITIZE_STRING);
+            $aircraft_manufacturer = filter_var($aircraft_manufacturer,513);
             if (!is_string($aircraft_manufacturer))
             {
                 return array();
@@ -713,7 +713,7 @@ class MarineArchive {
 	
         if ($airline_icao != "")
         {
-            $airline_icao = filter_var($airline_icao,FILTER_SANITIZE_STRING);
+            $airline_icao = filter_var($airline_icao,513);
             if (!is_string($airline_icao))
             {
                 return array();
@@ -724,7 +724,7 @@ class MarineArchive {
 	
         if ($airline_country != "")
         {
-            $airline_country = filter_var($airline_country,FILTER_SANITIZE_STRING);
+            $airline_country = filter_var($airline_country,513);
             if (!is_string($airline_country))
             {
                 return array();
@@ -735,7 +735,7 @@ class MarineArchive {
 	
         if ($airline_type != "")
         {
-            $airline_type = filter_var($airline_type,FILTER_SANITIZE_STRING);
+            $airline_type = filter_var($airline_type,513);
             if (!is_string($airline_type))
             {
                 return array();
@@ -757,7 +757,7 @@ class MarineArchive {
 	
         if ($airport != "")
         {
-            $airport = filter_var($airport,FILTER_SANITIZE_STRING);
+            $airport = filter_var($airport,513);
             if (!is_string($airport))
             {
                 return array();
@@ -768,7 +768,7 @@ class MarineArchive {
 	
         if ($airport_country != "")
         {
-            $airport_country = filter_var($airport_country,FILTER_SANITIZE_STRING);
+            $airport_country = filter_var($airport_country,513);
             if (!is_string($airport_country))
             {
                 return array();
@@ -779,7 +779,7 @@ class MarineArchive {
     
         if ($callsign != "")
         {
-            $callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
+            $callsign = filter_var($callsign,513);
             if (!is_string($callsign))
             {
                 return array();
@@ -796,7 +796,7 @@ class MarineArchive {
 
         if ($owner != "")
         {
-            $owner = filter_var($owner,FILTER_SANITIZE_STRING);
+            $owner = filter_var($owner,513);
             if (!is_string($owner))
             {
                 return array();
@@ -807,7 +807,7 @@ class MarineArchive {
 
         if ($pilot_name != "")
         {
-            $pilot_name = filter_var($pilot_name,FILTER_SANITIZE_STRING);
+            $pilot_name = filter_var($pilot_name,513);
             if (!is_string($pilot_name))
             {
                 return array();
@@ -829,7 +829,7 @@ class MarineArchive {
 	
         if ($departure_airport_route != "")
         {
-            $departure_airport_route = filter_var($departure_airport_route,FILTER_SANITIZE_STRING);
+            $departure_airport_route = filter_var($departure_airport_route,513);
             if (!is_string($departure_airport_route))
             {
                 return array();
@@ -840,7 +840,7 @@ class MarineArchive {
 	
         if ($arrival_airport_route != "")
         {
-            $arrival_airport_route = filter_var($arrival_airport_route,FILTER_SANITIZE_STRING);
+            $arrival_airport_route = filter_var($arrival_airport_route,513);
             if (!is_string($arrival_airport_route))
             {
                 return array();
@@ -872,8 +872,8 @@ class MarineArchive {
         {
             $date_array = explode(",", $date_posted);
 	    
-            $date_array[0] = filter_var($date_array[0],FILTER_SANITIZE_STRING);
-            $date_array[1] = filter_var($date_array[1],FILTER_SANITIZE_STRING);
+            $date_array[0] = filter_var($date_array[0],513);
+            $date_array[1] = filter_var($date_array[1],513);
 	    
             if ($globalTimezone != '') {
                 date_default_timezone_set($globalTimezone);
@@ -1248,7 +1248,7 @@ class MarineArchive {
     {
 	$Marine = new Marine($this->db);
 	date_default_timezone_set('UTC');
-	$id = filter_var($id, FILTER_SANITIZE_STRING);
+	$id = filter_var($id, 513);
 	$query  = 'SELECT marine_archive.* FROM marine_archive INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_archive l WHERE l.fammarine_id = :id AND l.date <= :date GROUP BY l.fammarine_id) s on marine_archive.fammarine_id = s.fammarine_id AND marine_archive.date = s.maxdate ORDER BY marine_archive.date DESC';
 	$date = date('c',$date);
 	$spotter_array = $Marine->getDataFromDB($query,array(':id' => $id,':date' => $date));
@@ -1266,7 +1266,7 @@ class MarineArchive {
     {
 	$Marine = new Marine($this->db);
 	date_default_timezone_set('UTC');
-	$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+	$ident = filter_var($ident, 513);
 	$query  = 'SELECT marine_archive.* FROM marine_archive INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_archive l WHERE l.ident = :ident AND l.date <= :date GROUP BY l.fammarine_id) s on marine_archive.fammarine_id = s.fammarine_id AND marine_archive.date = s.maxdate ORDER BY marine_archive.date DESC';
 	$date = date('c',$date);
 	$spotter_array = $Marine->getDataFromDB($query,array(':ident' => $ident,':date' => $date));

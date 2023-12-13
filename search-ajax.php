@@ -7,7 +7,7 @@ $Stats = new Stats();
 $Spotter = new Spotter();
 $orderby = $Spotter->getOrderBy();
 
-$ask = filter_input(INPUT_GET,'ask',FILTER_SANITIZE_STRING);
+$ask = filter_input(INPUT_GET,'ask',513);
 if ($ask == 'aircraftsdetected') {
 	require_once('require/class.SpotterLive.php');
 	$SpotterLive = new SpotterLive();

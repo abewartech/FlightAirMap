@@ -144,7 +144,7 @@ class TrackerArchive {
     {
         $Tracker = new Tracker($this->db);
         date_default_timezone_set('UTC');
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT tracker_archive.* FROM tracker_archive WHERE ident = :ident ORDER BY date DESC LIMIT 1";
         $spotter_array = $Tracker->getDataFromDB($query,array(':ident' => $ident));
         return $spotter_array;
@@ -161,7 +161,7 @@ class TrackerArchive {
     {
         $Tracker = new Tracker($this->db);
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         //$query  = TrackerArchive->$global_query." WHERE tracker_archive.famtrackid = :id";
         //$query  = "SELECT tracker_archive.* FROM tracker_archive INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_archive l WHERE l.famtrackid = :id GROUP BY l.famtrackid) s on tracker_archive.famtrackid = s.famtrackid AND tracker_archive.date = s.maxdate LIMIT 1";
         $query  = "SELECT * FROM tracker_archive WHERE famtrackid = :id ORDER BY date DESC LIMIT 1";
@@ -192,7 +192,7 @@ class TrackerArchive {
     public function getAllArchiveTrackerDataById($id,$date = '')
     {
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         if ($date == '') $query  = $this->global_query." WHERE tracker_archive.famtrackid = :id ORDER BY date";
         else $query  = $this->global_query." WHERE tracker_archive.famtrackid = :id AND date < '".date('c',$date)."' ORDER BY date";
 
@@ -219,7 +219,7 @@ class TrackerArchive {
     public function getCoordArchiveTrackerDataById($id)
     {
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = "SELECT tracker_archive.latitude, tracker_archive.longitude, tracker_archive.date FROM tracker_archive WHERE tracker_archive.famtrackid = :id";
 
 //              $spotter_array = Tracker->getDataFromDB($query,array(':id' => $id));
@@ -248,7 +248,7 @@ class TrackerArchive {
 
         date_default_timezone_set('UTC');
 
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT tracker_archive.altitude, tracker_archive.date FROM tracker_archive WHERE tracker_archive.ident = :ident AND tracker_archive.latitude <> 0 AND tracker_archive.longitude <> 0 ORDER BY date";
 
         try {
@@ -274,7 +274,7 @@ class TrackerArchive {
 
         date_default_timezone_set('UTC');
 
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = "SELECT tracker_archive.altitude, tracker_archive.date FROM tracker_archive WHERE tracker_archive.famtrackid = :id AND tracker_archive.latitude <> 0 AND tracker_archive.longitude <> 0 ORDER BY date";
 
         try {
@@ -300,7 +300,7 @@ class TrackerArchive {
 
         date_default_timezone_set('UTC');
 
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = "SELECT tracker_archive.altitude, tracker_archive.ground_speed, tracker_archive.date FROM tracker_archive WHERE tracker_archive.famtrackid = :id ORDER BY date";
 
         try {
@@ -327,7 +327,7 @@ class TrackerArchive {
 
         date_default_timezone_set('UTC');
 
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT tracker_archive.altitude, tracker_archive.date FROM tracker_archive INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_archive l WHERE l.ident = :ident GROUP BY l.famtrackid) s on tracker_archive.famtrackid = s.famtrackid AND tracker_archive.date = s.maxdate LIMIT 1";
 //                $query  = "SELECT tracker_archive.altitude, tracker_archive.date FROM tracker_archive WHERE tracker_archive.ident = :ident";
 
@@ -355,7 +355,7 @@ class TrackerArchive {
     public function getTrackerArchiveData($ident,$famtrackid,$date)
     {
         $Tracker = new Tracker($this->db);
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = "SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM spotter_live l WHERE l.ident = :ident AND l.famtrackid = :famtrackid AND l.date LIKE :date GROUP BY l.famtrackid) s on spotter_live.famtrackid = s.famtrackid AND spotter_live.date = s.maxdate";
 
         $spotter_array = $Tracker->getDataFromDB($query,array(':ident' => $ident,':famtrackid' => $famtrackid,':date' => $date.'%'));
@@ -658,7 +658,7 @@ class TrackerArchive {
 	
         if ($registration != "")
         {
-            $registration = filter_var($registration,FILTER_SANITIZE_STRING);
+            $registration = filter_var($registration,513);
             if (!is_string($registration))
             {
                 return array();
@@ -669,7 +669,7 @@ class TrackerArchive {
 	
         if ($aircraft_icao != "")
         {
-            $aircraft_icao = filter_var($aircraft_icao,FILTER_SANITIZE_STRING);
+            $aircraft_icao = filter_var($aircraft_icao,513);
             if (!is_string($aircraft_icao))
             {
                 return array();
@@ -680,7 +680,7 @@ class TrackerArchive {
 	
         if ($aircraft_manufacturer != "")
         {
-            $aircraft_manufacturer = filter_var($aircraft_manufacturer,FILTER_SANITIZE_STRING);
+            $aircraft_manufacturer = filter_var($aircraft_manufacturer,513);
             if (!is_string($aircraft_manufacturer))
             {
                 return array();
@@ -701,7 +701,7 @@ class TrackerArchive {
 	
         if ($airline_icao != "")
         {
-            $airline_icao = filter_var($airline_icao,FILTER_SANITIZE_STRING);
+            $airline_icao = filter_var($airline_icao,513);
             if (!is_string($airline_icao))
             {
                 return array();
@@ -712,7 +712,7 @@ class TrackerArchive {
 	
         if ($airline_country != "")
         {
-            $airline_country = filter_var($airline_country,FILTER_SANITIZE_STRING);
+            $airline_country = filter_var($airline_country,513);
             if (!is_string($airline_country))
             {
                 return array();
@@ -723,7 +723,7 @@ class TrackerArchive {
 	
         if ($airline_type != "")
         {
-            $airline_type = filter_var($airline_type,FILTER_SANITIZE_STRING);
+            $airline_type = filter_var($airline_type,513);
             if (!is_string($airline_type))
             {
                 return array();
@@ -745,7 +745,7 @@ class TrackerArchive {
 	
         if ($airport != "")
         {
-            $airport = filter_var($airport,FILTER_SANITIZE_STRING);
+            $airport = filter_var($airport,513);
             if (!is_string($airport))
             {
                 return array();
@@ -756,7 +756,7 @@ class TrackerArchive {
 	
         if ($airport_country != "")
         {
-            $airport_country = filter_var($airport_country,FILTER_SANITIZE_STRING);
+            $airport_country = filter_var($airport_country,513);
             if (!is_string($airport_country))
             {
                 return array();
@@ -767,7 +767,7 @@ class TrackerArchive {
     
         if ($callsign != "")
         {
-            $callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
+            $callsign = filter_var($callsign,513);
             if (!is_string($callsign))
             {
                 return array();
@@ -784,7 +784,7 @@ class TrackerArchive {
 
         if ($owner != "")
         {
-            $owner = filter_var($owner,FILTER_SANITIZE_STRING);
+            $owner = filter_var($owner,513);
             if (!is_string($owner))
             {
                 return array();
@@ -795,7 +795,7 @@ class TrackerArchive {
 
         if ($pilot_name != "")
         {
-            $pilot_name = filter_var($pilot_name,FILTER_SANITIZE_STRING);
+            $pilot_name = filter_var($pilot_name,513);
             if (!is_string($pilot_name))
             {
                 return array();
@@ -817,7 +817,7 @@ class TrackerArchive {
 	
         if ($departure_airport_route != "")
         {
-            $departure_airport_route = filter_var($departure_airport_route,FILTER_SANITIZE_STRING);
+            $departure_airport_route = filter_var($departure_airport_route,513);
             if (!is_string($departure_airport_route))
             {
                 return array();
@@ -828,7 +828,7 @@ class TrackerArchive {
 	
         if ($arrival_airport_route != "")
         {
-            $arrival_airport_route = filter_var($arrival_airport_route,FILTER_SANITIZE_STRING);
+            $arrival_airport_route = filter_var($arrival_airport_route,513);
             if (!is_string($arrival_airport_route))
             {
                 return array();
@@ -860,8 +860,8 @@ class TrackerArchive {
         {
             $date_array = explode(",", $date_posted);
 	    
-            $date_array[0] = filter_var($date_array[0],FILTER_SANITIZE_STRING);
-            $date_array[1] = filter_var($date_array[1],FILTER_SANITIZE_STRING);
+            $date_array[0] = filter_var($date_array[0],513);
+            $date_array[1] = filter_var($date_array[1],513);
 	    
             if ($globalTimezone != '') {
                 date_default_timezone_set($globalTimezone);
@@ -1236,7 +1236,7 @@ class TrackerArchive {
     {
         $Tracker = new Tracker($this->db);
         date_default_timezone_set('UTC');
-        $id = filter_var($id, FILTER_SANITIZE_STRING);
+        $id = filter_var($id, 513);
         $query  = 'SELECT tracker_archive.* FROM tracker_archive INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_archive l WHERE l.famtrackid = :id AND l.date <= :date GROUP BY l.famtrackid) s on tracker_archive.famtrackid = s.famtrackid AND tracker_archive.date = s.maxdate ORDER BY tracker_archive.date DESC';
         $date = date('c',$date);
         $spotter_array = $Tracker->getDataFromDB($query,array(':id' => $id,':date' => $date));
@@ -1254,7 +1254,7 @@ class TrackerArchive {
     {
         $Tracker = new Tracker($this->db);
         date_default_timezone_set('UTC');
-        $ident = filter_var($ident, FILTER_SANITIZE_STRING);
+        $ident = filter_var($ident, 513);
         $query  = 'SELECT tracker_archive.* FROM tracker_archive INNER JOIN (SELECT l.famtrackid, max(l.date) as maxdate FROM tracker_archive l WHERE l.ident = :ident AND l.date <= :date GROUP BY l.famtrackid) s on tracker_archive.famtrackid = s.famtrackid AND tracker_archive.date = s.maxdate ORDER BY tracker_archive.date DESC';
         $date = date('c',$date);
         $spotter_array = $Tracker->getDataFromDB($query,array(':ident' => $ident,':date' => $date));

@@ -3,7 +3,7 @@ require_once('require/class.Connection.php');
 require_once('require/class.Language.php');
 require_once('require/class.Translation.php');
 $type = '';
-$ident = urldecode(filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING));
+$ident = urldecode(filter_input(INPUT_GET,'ident',513));
 if (isset($_GET['marine'])) {
 	require_once('require/class.Marine.php');
 	require_once('require/class.MarineLive.php');
@@ -59,7 +59,7 @@ if (!isset($_GET['ident'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	if ($type == 'aircraft') {
 		if ($sort != '') 
 		{

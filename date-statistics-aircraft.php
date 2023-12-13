@@ -3,8 +3,8 @@ require_once('require/class.Connection.php');
 require_once('require/class.Spotter.php');
 require_once('require/class.Language.php');
 $Spotter = new Spotter();
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
-$date = filter_input(INPUT_GET,'date',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
+$date = filter_input(INPUT_GET,'date',513);
 if (isset($_GET['date'])) $spotter_array = $Spotter->getSpotterDataByDate($date,"0,1", $sort);
 else $spotter_array = array();
 

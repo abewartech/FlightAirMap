@@ -7,8 +7,8 @@ if (!isset($_GET['aircraft_manufacturer'])) {
         header('Location: '.$globalURL.'/manufacturer');
         die();
 }
-$aircraft_manufacturer = urldecode(filter_input(INPUT_GET,'aircraft_manufacturer',FILTER_SANITIZE_STRING));
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$aircraft_manufacturer = urldecode(filter_input(INPUT_GET,'aircraft_manufacturer',513));
+$sort = filter_input(INPUT_GET,'sort',513);
 $Spotter = new Spotter();
 $manufacturer = ucwords(str_replace("-", " ", $aircraft_manufacturer));
 

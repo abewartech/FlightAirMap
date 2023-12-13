@@ -25,7 +25,7 @@ if(!isset($_GET['limit']))
 	$limit_end = $limit_explode[1];
 }
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 
 $absolute_difference = abs($limit_start - $limit_end);
 $limit_next = $limit_end + $absolute_difference;

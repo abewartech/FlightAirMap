@@ -9,7 +9,7 @@ if (!isset($_GET['aircraft_type'])) {
 	header('Location: '.$globalURL.'/aircraft');
 	die();
 }
-$aircraft_type = filter_input(INPUT_GET,'aircraft_type',FILTER_SANITIZE_STRING);
+$aircraft_type = filter_input(INPUT_GET,'aircraft_type',513);
 $spotter_array = $Spotter->getSpotterDataByAircraft($aircraft_type,"0,1","");
 
 

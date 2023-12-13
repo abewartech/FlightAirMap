@@ -4,7 +4,7 @@ require_once('require/class.Language.php');
 
 if (isset($_POST['country']) && $_POST['country'] != "")
 {
-	$country = filter_input(INPUT_POST,'country',FILTER_SANITIZE_STRING);
+	$country = filter_input(INPUT_POST,'country',513);
 	header('Location: '.$globalURL.'/country/'.$country);
 } else {
 	if ($globalURL == '') {

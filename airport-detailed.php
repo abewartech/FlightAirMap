@@ -28,11 +28,11 @@ if (!isset($_GET['airport'])){
 	$limit_next = $limit_end + $absolute_difference;
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
-	$airport_icao = filter_input(INPUT_GET,'airport',FILTER_SANITIZE_STRING);
+	$airport_icao = filter_input(INPUT_GET,'airport',513);
 	$airport = $airport_icao;
 	$page_url = $globalURL.'/airport/'.$airport_icao;
 	
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	$airport_array = $Spotter->getAllAirportInfo($airport_icao);
 	if (!empty($airport_array))
 	{

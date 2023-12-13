@@ -502,7 +502,7 @@ class Marine{
 		$limit_query = '';
 		$additional_query = '';
 		$filter_query = $this->getFilter($filter,true,true);
-		$captain = filter_var($captain,FILTER_SANITIZE_STRING);
+		$captain = filter_var($captain,513);
 		if ($captain != "")
 		{
 			$additional_query = " AND (marine_output.captain_name = :captain OR marine_output.captain_id = :captain)";
@@ -548,7 +548,7 @@ class Marine{
 		$limit_query = '';
 		$additional_query = '';
 		$filter_query = $this->getFilter($filter,true,true);
-		$race = filter_var($race,FILTER_SANITIZE_STRING);
+		$race = filter_var($race,513);
 		if ($race != "")
 		{
 			$additional_query = " AND (marine_output.race_name = :race OR marine_output.race_id = :race)";
@@ -590,7 +590,7 @@ class Marine{
      */
 	public function countRacesByCaptain($captain,$filters = array())
 	{
-		$captain = filter_var($captain,FILTER_SANITIZE_STRING);
+		$captain = filter_var($captain,513);
 		$filter_query = $this->getFilter($filters,true,true);
 		$query  = "SELECT COUNT(*) AS nb 
 			FROM marine_output".$filter_query." (marine_output.captain_name = :captain OR marine_output.captain_id = :captain)";
@@ -611,7 +611,7 @@ class Marine{
      */
 	public function countCaptainsByRace($race,$filters = array())
 	{
-		$race = filter_var($race,FILTER_SANITIZE_STRING);
+		$race = filter_var($race,513);
 		$filter_query = $this->getFilter($filters,true,true);
 		$query  = "SELECT COUNT(*) AS nb 
 			FROM marine_output".$filter_query." (marine_output.race_name = :race OR marine_output.race_id = :race)";
@@ -637,7 +637,7 @@ class Marine{
 	{
 		global $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$captain = filter_var($captain,FILTER_SANITIZE_STRING);
+		$captain = filter_var($captain,513);
 		$query  = "SELECT DISTINCT marine_output.type, COUNT(marine_output.type) AS type_count
 			FROM marine_output".$filter_query." (marine_output.captain_id = :captain OR marine_output.captain_name = :captain)";
 		$query_values = array();
@@ -690,7 +690,7 @@ class Marine{
 	{
 		global $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$race = filter_var($race,FILTER_SANITIZE_STRING);
+		$race = filter_var($race,513);
 		$query  = "SELECT DISTINCT marine_output.type, COUNT(marine_output.type) AS type_count
 			FROM marine_output".$filter_query." (marine_output.race_id = :race OR marine_output.race_name = :race)";
 		$query_values = array();
@@ -742,7 +742,7 @@ class Marine{
 	public function getRaceDurationByCaptain($captain,$filters = array(),$year = '',$month = '',$day = '')
 	{
 		global $globalDBdriver;
-		$captain = filter_var($captain,FILTER_SANITIZE_STRING);
+		$captain = filter_var($captain,513);
 		$filter_query = $this->getFilter($filters,true,true);
 		$query  = "SELECT SUM(last_seen - date) AS duration 
 		    FROM marine_output".$filter_query." (marine_output.captain_name = :captain OR marine_output.captain_id = :captain) 
@@ -980,9 +980,9 @@ class Marine{
 		$mmsi = filter_var($mmsi,FILTER_SANITIZE_NUMBER_INT);
 		if ($mmsi != '') {
 			$imo = filter_var($imo,FILTER_SANITIZE_NUMBER_INT);
-			$ident = filter_var($ident,FILTER_SANITIZE_STRING);
-			$callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
-			$type = filter_var($type,FILTER_SANITIZE_STRING);
+			$ident = filter_var($ident,513);
+			$callsign = filter_var($callsign,513);
+			$type = filter_var($type,513);
 			$identinfo = $this->getIdentity($mmsi);
 			if (empty($identinfo)) {
 				$query  = "INSERT INTO marine_identity (mmsi,imo,call_sign,ship_name,type) VALUES (:mmsi,:imo,:call_sign,:ship_name,:type)";
@@ -1249,26 +1249,26 @@ class Marine{
 			$date = date("Y-m-d H:i:s", time());
 		}
 
-		$fammarine_id = filter_var($fammarine_id,FILTER_SANITIZE_STRING);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
+		$fammarine_id = filter_var($fammarine_id,513);
+		$ident = filter_var($ident,513);
 		$latitude = filter_var($latitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$longitude = filter_var($longitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$heading = filter_var($heading,FILTER_SANITIZE_NUMBER_INT);
 		$groundspeed = filter_var($groundspeed,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-		$format_source = filter_var($format_source,FILTER_SANITIZE_STRING);
-		$mmsi = filter_var($mmsi,FILTER_SANITIZE_STRING);
-		$type = filter_var($type,FILTER_SANITIZE_STRING);
-		$status = filter_var($status,FILTER_SANITIZE_STRING);
+		$format_source = filter_var($format_source,513);
+		$mmsi = filter_var($mmsi,513);
+		$type = filter_var($type,513);
+		$status = filter_var($status,513);
 		$type_id = filter_var($typeid,FILTER_SANITIZE_NUMBER_INT);
 		$status_id = filter_var($statusid,FILTER_SANITIZE_NUMBER_INT);
-		$imo = filter_var($imo,FILTER_SANITIZE_STRING);
-		$callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
-		$arrival_code = filter_var($arrival_code,FILTER_SANITIZE_STRING);
-		$arrival_date = filter_var($arrival_date,FILTER_SANITIZE_STRING);
-		$captain_id = filter_var($captain_id,FILTER_SANITIZE_STRING);
-		$captain_name = filter_var($captain_name,FILTER_SANITIZE_STRING);
-		$race_id = filter_var($race_id,FILTER_SANITIZE_STRING);
-		$race_name = filter_var($race_name,FILTER_SANITIZE_STRING);
+		$imo = filter_var($imo,513);
+		$callsign = filter_var($callsign,513);
+		$arrival_code = filter_var($arrival_code,513);
+		$arrival_date = filter_var($arrival_date,513);
+		$captain_id = filter_var($captain_id,513);
+		$captain_name = filter_var($captain_name,513);
+		$race_id = filter_var($race_id,513);
+		$race_name = filter_var($race_name,513);
 		$race_rank = filter_var($race_rank,FILTER_SANITIZE_NUMBER_INT);
 		$race_time = filter_var($race_time,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$distance = filter_var($distance,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
@@ -1362,7 +1362,7 @@ class Marine{
 			} else {
 				$q_array = explode(" ", $q);
 				foreach ($q_array as $q_item){
-					$q_item = filter_var($q_item,FILTER_SANITIZE_STRING);
+					$q_item = filter_var($q_item,513);
 					$additional_query .= " AND (";
 					$additional_query .= "(marine_output.ident like '%".$q_item."%')";
 					$additional_query .= ")";
@@ -1856,7 +1856,7 @@ class Marine{
 	{
 		global $globalTimezone, $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$date = filter_var($date,FILTER_SANITIZE_STRING);
+		$date = filter_var($date,513);
 		if ($globalTimezone != '') {
 			date_default_timezone_set($globalTimezone);
 			$datetime = new DateTime($date);
@@ -1904,7 +1904,7 @@ class Marine{
 	{
 		global $globalTimezone, $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident,513);
 		if ($globalTimezone != '') {
 			date_default_timezone_set($globalTimezone);
 			$datetime = new DateTime();
@@ -2201,7 +2201,7 @@ class Marine{
      */
 	public function getMarineIDBasedOnFamMarineID($fammarine_id)
 	{
-		$fammarine_id = filter_var($fammarine_id,FILTER_SANITIZE_STRING);
+		$fammarine_id = filter_var($fammarine_id,513);
 
 		$query  = "SELECT marine_output.marine_id
 				FROM marine_output 
@@ -2392,7 +2392,7 @@ class Marine{
 	public function getCountryFromISO2($iso2)
 	{
 		global $globalDebug;
-		$iso2 = filter_var($iso2,FILTER_SANITIZE_STRING);
+		$iso2 = filter_var($iso2,513);
 	
 		$Connection = new Connection($this->db);
 		if (!$Connection->tableExists('countries')) return '';
@@ -2560,7 +2560,7 @@ class Marine{
 			} else {
 				$q_array = explode(" ", $q);
 				foreach ($q_array as $q_item){
-					$q_item = filter_var($q_item,FILTER_SANITIZE_STRING);
+					$q_item = filter_var($q_item,513);
 					$additional_query .= " AND (";
 					if (is_int($q_item)) $additional_query .= "(marine_output.marine_id = '".$q_item."') OR ";
 					if (is_int($q_item)) $additional_query .= "(marine_output.mmsi = '".$q_item."') OR ";
@@ -2576,7 +2576,7 @@ class Marine{
 		}
 		if ($callsign != "")
 		{
-			$callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
+			$callsign = filter_var($callsign,513);
 			if (!is_string($callsign))
 			{
 				return array();
@@ -2587,7 +2587,7 @@ class Marine{
 		}
 		if ($mmsi != "")
 		{
-			$mmsi = filter_var($mmsi,FILTER_SANITIZE_STRING);
+			$mmsi = filter_var($mmsi,513);
 			if (!is_numeric($mmsi))
 			{
 				return array();
@@ -2598,7 +2598,7 @@ class Marine{
 		}
 		if ($imo != "")
 		{
-			$imo = filter_var($imo,FILTER_SANITIZE_STRING);
+			$imo = filter_var($imo,513);
 			if (!is_numeric($imo))
 			{
 				return array();
@@ -2609,7 +2609,7 @@ class Marine{
 		}
 		if ($captain_id != "")
 		{
-			$captain_id = filter_var($captain_id,FILTER_SANITIZE_STRING);
+			$captain_id = filter_var($captain_id,513);
 			if (!is_numeric($captain_id))
 			{
 				return array();
@@ -2620,7 +2620,7 @@ class Marine{
 		}
 		if ($race_id != "")
 		{
-			$race_id = filter_var($race_id,FILTER_SANITIZE_STRING);
+			$race_id = filter_var($race_id,513);
 			if (!is_numeric($race_id))
 			{
 				return array();
@@ -2631,7 +2631,7 @@ class Marine{
 		}
 		if ($captain_name != "")
 		{
-			$captain_name = filter_var($captain_name,FILTER_SANITIZE_STRING);
+			$captain_name = filter_var($captain_name,513);
 			if (!is_string($captain_name))
 			{
 				return array();
@@ -2642,7 +2642,7 @@ class Marine{
 		}
 		if ($race_name != "")
 		{
-			$race_name = filter_var($race_name,FILTER_SANITIZE_STRING);
+			$race_name = filter_var($race_name,513);
 			if (!is_numeric($race_name))
 			{
 				return array();
@@ -2654,8 +2654,8 @@ class Marine{
 		if ($date_posted != "")
 		{
 			$date_array = explode(",", $date_posted);
-			$date_array[0] = filter_var($date_array[0],FILTER_SANITIZE_STRING);
-			$date_array[1] = filter_var($date_array[1],FILTER_SANITIZE_STRING);
+			$date_array[0] = filter_var($date_array[0],513);
+			$date_array[1] = filter_var($date_array[1],513);
 			if ($globalTimezone != '') {
 				date_default_timezone_set($globalTimezone);
 				$datetime = new DateTime();
@@ -2748,7 +2748,7 @@ class Marine{
      */
 	public function getRaceByName($race_name)
 	{
-		$race_name = filter_var($race_name,FILTER_SANITIZE_STRING);
+		$race_name = filter_var($race_name,513);
 		$query  = "SELECT * FROM marine_race WHERE race_name = :race_name LIMIT 1";
 		$sth = $this->db->prepare($query);
 		$sth->execute(array(':race_name' => $race_name));
@@ -2787,11 +2787,11 @@ class Marine{
 	{
 		$race_id = filter_var($race_id,FILTER_SANITIZE_NUMBER_INT);
 		if ($race_id != '') {
-			$race_name = filter_var($race_name,FILTER_SANITIZE_STRING);
-			$race_creator = filter_var($race_creator,FILTER_SANITIZE_STRING);
-			$race_desc = filter_var($race_desc,FILTER_SANITIZE_STRING);
-			$race_startdate = filter_var($race_startdate,FILTER_SANITIZE_STRING);
-			//$race_markers = filter_var($race_markers,FILTER_SANITIZE_STRING);
+			$race_name = filter_var($race_name,513);
+			$race_creator = filter_var($race_creator,513);
+			$race_desc = filter_var($race_desc,513);
+			$race_startdate = filter_var($race_startdate,513);
+			//$race_markers = filter_var($race_markers,513);
 			$allrace = $this->getRace($race_id);
 			if (empty($allrace)) {
 				$query  = "INSERT INTO marine_race (race_id,race_name,race_creator,race_desc,race_startdate,race_markers) VALUES (:race_id,:race_name,:race_creator,:race_desc,:race_startdate,:race_markers)";

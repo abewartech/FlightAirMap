@@ -28,9 +28,9 @@ if (!isset($_GET['type'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$marine_type = filter_input(INPUT_GET,'type',FILTER_SANITIZE_STRING);
+	$marine_type = filter_input(INPUT_GET,'type',513);
 	$page_url = $globalURL.'/marine/type/'.$marine_type;
-	$sort = htmlspecialchars(filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING));
+	$sort = htmlspecialchars(filter_input(INPUT_GET,'sort',513));
 	$spotter_array = $Marine->getMarineDataByType($marine_type,$limit_start.",".$absolute_difference, $sort);
 	
 	if (!empty($spotter_array))

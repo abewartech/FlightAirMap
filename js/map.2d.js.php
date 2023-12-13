@@ -112,16 +112,16 @@ if (archive === false) {
 <?php
 	}
 	if (isset($_GET['ident'])) {
-		$ident = filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING);
+		$ident = filter_input(INPUT_GET,'ident',513);
 	}
 	if (isset($_GET['flightaware_id'])) {
-		$flightaware_id = filter_input(INPUT_GET,'flightaware_id',FILTER_SANITIZE_STRING);
+		$flightaware_id = filter_input(INPUT_GET,'flightaware_id',513);
 	}
 	if (isset($_GET['latitude'])) {
-		$latitude = filter_input(INPUT_GET,'latitude',FILTER_SANITIZE_STRING);
+		$latitude = filter_input(INPUT_GET,'latitude',513);
 	}
 	if (isset($_GET['longitude'])) {
-		$longitude = filter_input(INPUT_GET,'longitude',FILTER_SANITIZE_STRING);
+		$longitude = filter_input(INPUT_GET,'longitude',513);
 	}
 ?>
 

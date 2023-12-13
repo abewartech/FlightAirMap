@@ -32,9 +32,9 @@ class Image {
      */
 	public function getSpotterImage($registration,$aircraft_icao = '', $airline_icao = '')
 	{
-		$registration = filter_var($registration,FILTER_SANITIZE_STRING);
-		$aircraft_icao = filter_var($aircraft_icao,FILTER_SANITIZE_STRING);
-		$airline_icao = filter_var($airline_icao,FILTER_SANITIZE_STRING);
+		$registration = filter_var($registration,513);
+		$aircraft_icao = filter_var($aircraft_icao,513);
+		$airline_icao = filter_var($airline_icao,513);
 		$reg = $registration;
 		if (($reg == '' || $reg == 'NA') && $aircraft_icao != '') $reg = $aircraft_icao.$airline_icao;
 		$reg = trim($reg);
@@ -61,10 +61,10 @@ class Image {
 	public function getMarineImage($mmsi,$imo = '',$name = '',$type_name = '')
 	{
 		global $globalMarineImagePics;
-		$mmsi = filter_var($mmsi,FILTER_SANITIZE_STRING);
-		$imo = filter_var($imo,FILTER_SANITIZE_STRING);
-		$name = filter_var($name,FILTER_SANITIZE_STRING);
-		$type_name = str_replace('&#39;',"'",filter_var($type_name,FILTER_SANITIZE_STRING));
+		$mmsi = filter_var($mmsi,513);
+		$imo = filter_var($imo,513);
+		$name = filter_var($name,513);
+		$type_name = str_replace('&#39;',"'",filter_var($type_name,513));
 		if (isset($globalMarineImagePics) && !empty($globalMarineImagePics)) {
 			if ($type_name != '' && isset($globalMarineImagePics['type'][$type_name])) {
 				if (!isset($globalMarineImagePics['type'][$type_name]['image_thumbnail'])) {
@@ -125,7 +125,7 @@ class Image {
 	{
 		global $globalDebug,$globalAircraftImageFetch, $globalOffline;
 		if ((isset($globalAircraftImageFetch) && $globalAircraftImageFetch === FALSE) || (isset($globalOffline) && $globalOffline === TRUE)) return '';
-		$registration = filter_var($registration,FILTER_SANITIZE_STRING);
+		$registration = filter_var($registration,513);
 		$registration = trim($registration);
 		//getting the aircraft image
 		if ($globalDebug && $registration != '') echo 'Try to find an aircraft image for '.$registration.'...';
@@ -159,9 +159,9 @@ class Image {
 	{
 		global $globalDebug,$globalMarineImageFetch, $globalOffline;
 		if ((isset($globalMarineImageFetch) && !$globalMarineImageFetch) || (isset($globalOffline) && $globalOffline === TRUE)) return '';
-		$mmsi = filter_var($mmsi,FILTER_SANITIZE_STRING);
-		$imo = filter_var($imo,FILTER_SANITIZE_STRING);
-		$name = filter_var($name,FILTER_SANITIZE_STRING);
+		$mmsi = filter_var($mmsi,513);
+		$imo = filter_var($imo,513);
+		$name = filter_var($name,513);
 		$name = trim($name);
 		$Marine = new Marine($this->db);
 		if ($imo == '' || $name == '') {
@@ -203,7 +203,7 @@ class Image {
 		global $globalAircraftImageSources, $globalIVAO, $globalAircraftImageCheckICAO, $globalVA;
 		$Spotter = new Spotter($this->db);
 		if (!isset($globalIVAO)) $globalIVAO = FALSE;
-		$aircraft_registration = filter_var($aircraft_registration,FILTER_SANITIZE_STRING);
+		$aircraft_registration = filter_var($aircraft_registration,513);
 		if ($aircraft_registration != '' && $aircraft_registration != 'NA' && (!isset($globalVA) || $globalVA !== TRUE)) {
 			if (strpos($aircraft_registration,'/') !== false) return array('thumbnail' => '','original' => '', 'copyright' => '','source' => '','source_website' => '');
 			$aircraft_registration = urlencode(trim($aircraft_registration));
@@ -252,9 +252,9 @@ class Image {
 	public function findMarineImage($mmsi,$imo = '',$name = '')
 	{
 		global $globalMarineImageSources;
-		$mmsi = filter_var($mmsi,FILTER_SANITIZE_STRING);
-		//$imo = filter_var($imo,FILTER_SANITIZE_STRING);
-		$name = filter_var($name,FILTER_SANITIZE_STRING);
+		$mmsi = filter_var($mmsi,513);
+		//$imo = filter_var($imo,513);
+		$name = filter_var($name,513);
 		$name = trim($name);
 		if (strlen($name) < 4) return array('thumbnail' => '','original' => '', 'copyright' => '', 'source' => '','source_website' => '');
 		/*

@@ -2,7 +2,7 @@
 require_once('require/class.Connection.php');
 require_once('require/class.Language.php');
 $type = '';
-$date = filter_input(INPUT_GET,'date',FILTER_SANITIZE_STRING);
+$date = filter_input(INPUT_GET,'date',513);
 if (isset($_GET['marine'])) {
 	require_once('require/class.Marine.php');;
 	$Marine = new Marine();
@@ -43,7 +43,7 @@ if (!isset($_GET['date'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	if ($sort != '') 
 	{
 		if ($type == 'marine') $spotter_array = $Marine->getMarineDataByDate($date,$limit_start.",".$absolute_difference, $sort);

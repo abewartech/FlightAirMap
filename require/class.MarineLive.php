@@ -209,7 +209,7 @@ class MarineLive {
 			$maxlat = filter_var($coord[3],FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 			$usecoord = true;
 		}
-		$id = filter_var($id,FILTER_SANITIZE_STRING);
+		$id = filter_var($id,513);
 		$filter_query = $this->getFilter($filter,true,true);
 
 		if (!isset($globalLiveInterval)) $globalLiveInterval = '200';
@@ -287,7 +287,7 @@ class MarineLive {
 	{
 		global $globalDBdriver, $globalLiveInterval, $globalMap3DMarinesLimit, $globalArchive;
 		date_default_timezone_set('UTC');
-		$id = filter_var($id,FILTER_SANITIZE_STRING);
+		$id = filter_var($id,513);
 		$filter_query = $this->getFilter($filter,true,true);
 
 		if (!isset($globalLiveInterval)) $globalLiveInterval = '200';
@@ -549,7 +549,7 @@ class MarineLive {
 		$Marine = new Marine($this->db);
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT marine_live.* FROM marine_live INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_live l WHERE l.ident = :ident GROUP BY l.fammarine_id) s on marine_live.fammarine_id = s.fammarine_id AND marine_live.date = s.maxdate ORDER BY marine_live.date DESC';
 
 		$spotter_array = $Marine->getDataFromDB($query,array(':ident' => $ident),'',true);
@@ -568,7 +568,7 @@ class MarineLive {
 	{
 		$Marine = new Marine($this->db);
 		date_default_timezone_set('UTC');
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = 'SELECT marine_live.* FROM marine_live INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_live l WHERE l.ident = :ident AND l.date <= :date GROUP BY l.fammarine_id) s on marine_live.fammarine_id = s.fammarine_id AND marine_live.date = s.maxdate ORDER BY marine_live.date DESC';
 		$date = date('c',$date);
 		$spotter_array = $Marine->getDataFromDB($query,array(':ident' => $ident,':date' => $date));
@@ -604,7 +604,7 @@ class MarineLive {
 		$Marine = new Marine($this->db);
 		date_default_timezone_set('UTC');
 
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
                 $query  = 'SELECT marine_live.* FROM marine_live INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_live l WHERE l.fammarine_id = :id GROUP BY l.fammarine_id) s on marine_live.fammarine_id = s.fammarine_id AND marine_live.date = s.maxdate ORDER BY marine_live.date DESC';
 
 		$spotter_array = $Marine->getDataFromDB($query,array(':id' => $id),'',true);
@@ -624,7 +624,7 @@ class MarineLive {
 		$Marine = new Marine($this->db);
 		date_default_timezone_set('UTC');
 
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
                 $query  = 'SELECT marine_live.* FROM marine_live INNER JOIN (SELECT l.fammarine_id, max(l.date) as maxdate FROM marine_live l WHERE l.fammarine_id = :id AND l.date <= :date GROUP BY l.fammarine_id) s on marine_live.fammarine_id = s.fammarine_id AND marine_live.date = s.maxdate ORDER BY marine_live.date DESC';
                 $date = date('c',$date);
 		$spotter_array = $Marine->getDataFromDB($query,array(':id' => $id,':date' => $date),'',true);
@@ -644,7 +644,7 @@ class MarineLive {
 	{
 		global $globalDBdriver, $globalLiveInterval;
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		//$query  = self::$global_query.' WHERE marine_live.fammarine_id = :id ORDER BY date';
 		if ($globalDBdriver == 'mysql') {
 			$query = 'SELECT marine_live.* FROM marine_live WHERE marine_live.fammarine_id = :id';
@@ -676,7 +676,7 @@ class MarineLive {
 	public function getAllLiveMarineDataByIdent($ident)
 	{
 		date_default_timezone_set('UTC');
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = self::$global_query.' WHERE marine_live.ident = :ident';
     		try {
 			
@@ -826,7 +826,7 @@ class MarineLive {
      */
 	public function deleteLiveMarineDataByIdent($ident)
 	{
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = 'DELETE FROM marine_live WHERE ident = :ident';
         
     		try {
@@ -848,7 +848,7 @@ class MarineLive {
      */
 	public function deleteLiveMarineDataById($id)
 	{
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = 'DELETE FROM marine_live WHERE fammarine_id = :id';
         
     		try {
@@ -1094,29 +1094,29 @@ class MarineLive {
 		if ($date == '') $date = date("Y-m-d H:i:s", time());
 
         
-		$fammarine_id = filter_var($fammarine_id,FILTER_SANITIZE_STRING);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
+		$fammarine_id = filter_var($fammarine_id,513);
+		$ident = filter_var($ident,513);
 		$latitude = filter_var($latitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$longitude = filter_var($longitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$distance = filter_var($distance,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$heading = filter_var($heading,FILTER_SANITIZE_NUMBER_INT);
 		$groundspeed = filter_var($groundspeed,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-		$format_source = filter_var($format_source,FILTER_SANITIZE_STRING);
-		$source_name = filter_var($source_name,FILTER_SANITIZE_STRING);
-		$over_country = filter_var($over_country,FILTER_SANITIZE_STRING);
-		$type = filter_var($type,FILTER_SANITIZE_STRING);
+		$format_source = filter_var($format_source,513);
+		$source_name = filter_var($source_name,513);
+		$over_country = filter_var($over_country,513);
+		$type = filter_var($type,513);
 		$typeid = filter_var($typeid,FILTER_SANITIZE_NUMBER_INT);
 		$mmsi = filter_var($mmsi,FILTER_SANITIZE_NUMBER_INT);
-		$status = filter_var($status,FILTER_SANITIZE_STRING);
+		$status = filter_var($status,513);
 		$statusid = filter_var($statusid,FILTER_SANITIZE_NUMBER_INT);
-		$imo = filter_var($imo,FILTER_SANITIZE_STRING);
-		$callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
-		$arrival_code = filter_var($arrival_code,FILTER_SANITIZE_STRING);
-		$arrival_date = filter_var($arrival_date,FILTER_SANITIZE_STRING);
-		$captain_id = filter_var($captain_id,FILTER_SANITIZE_STRING);
-		$captain_name = filter_var($captain_name,FILTER_SANITIZE_STRING);
-		$race_id = filter_var($race_id,FILTER_SANITIZE_STRING);
-		$race_name = filter_var($race_name,FILTER_SANITIZE_STRING);
+		$imo = filter_var($imo,513);
+		$callsign = filter_var($callsign,513);
+		$arrival_code = filter_var($arrival_code,513);
+		$arrival_date = filter_var($arrival_date,513);
+		$captain_id = filter_var($captain_id,513);
+		$captain_name = filter_var($captain_name,513);
+		$race_id = filter_var($race_id,513);
+		$race_name = filter_var($race_name,513);
 		$race_rank = filter_var($race_rank,FILTER_SANITIZE_NUMBER_INT);
 		if ($race_rank == '') $race_rank = NULL;
 		$race_time = filter_var($race_time,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);

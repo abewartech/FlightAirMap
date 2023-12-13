@@ -11,7 +11,7 @@ $Common = new Common();
 
 $from_archive = false;
 if (isset($_GET['ident'])) {
-	$ident = filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING);
+	$ident = filter_input(INPUT_GET,'ident',513);
 	if (isset($_GET['currenttime'])) {
 		$currenttime = filter_input(INPUT_GET,'currenttime',FILTER_SANITIZE_NUMBER_INT);
 		$currenttime = round($currenttime/1000);
@@ -33,7 +33,7 @@ if (isset($_GET['ident'])) {
 	}
 }
 if (isset($_GET['fammarine_id'])) {
-	$fammarine_id = filter_input(INPUT_GET,'fammarine_id',FILTER_SANITIZE_STRING);
+	$fammarine_id = filter_input(INPUT_GET,'fammarine_id',513);
 	if (isset($_GET['currenttime'])) {
 		$currenttime = filter_input(INPUT_GET,'currenttime',FILTER_SANITIZE_NUMBER_INT);
 		$currenttime = round($currenttime/1000);

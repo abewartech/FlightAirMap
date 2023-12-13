@@ -4,8 +4,8 @@ require_once('require/class.Spotter.php');
 require_once('require/class.Language.php');
 
 $Spotter = new Spotter();
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
-$date = filter_input(INPUT_GET,'date',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
+$date = filter_input(INPUT_GET,'date',513);
 $spotter_array = $Spotter->getSpotterDataByDate($date,"0,1", $sort);
 
 if (!empty($spotter_array))

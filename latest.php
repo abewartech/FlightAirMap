@@ -51,7 +51,7 @@ if ($type == 'marine') print '<p>'._("The table below shows the detailed informa
 elseif ($type == 'tracker') print '<p>'._("The table below shows the detailed information of all recent trackers.").'</p>';
 else print '<p>'._("The table below shows the detailed information of all recent flights.").'</p>';
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 $sql_begin = microtime(true);
 if ($type == 'marine') {
 	$spotter_array = $Marine->getLatestMarineData($limit_start.",".$absolute_difference, $sort);

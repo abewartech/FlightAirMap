@@ -7,7 +7,7 @@ require_once('require/class.NOTAM.php');
 <button type="button" class="close">&times;</button>
 <?php
 
-$notamref = filter_input(INPUT_GET,'notam',FILTER_SANITIZE_STRING);
+$notamref = filter_input(INPUT_GET,'notam',513);
 $notamref = urldecode($notamref);
 $NOTAM = new NOTAM();
 $notam = $NOTAM->getNOTAMbyRef($notamref);

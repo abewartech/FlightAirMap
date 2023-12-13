@@ -8,9 +8,9 @@ if (!isset($_GET['aircraft_manufacturer'])) {
         die();
 }
 $Spotter = new Spotter();
-$manufacturer = ucwords(str_replace("-", " ", urldecode(filter_input(INPUT_GET,'aircraft_manufacturer',FILTER_SANITIZE_STRING))));
+$manufacturer = ucwords(str_replace("-", " ", urldecode(filter_input(INPUT_GET,'aircraft_manufacturer',513))));
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 $spotter_array = $Spotter->getSpotterDataByManufacturer($manufacturer,"0,1", $sort);
 
 if (!empty($spotter_array))

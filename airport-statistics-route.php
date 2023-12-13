@@ -7,7 +7,7 @@ if (!isset($_GET['airport'])) {
         header('Location: '.$globalURL.'/airport');
         die();
 }
-$airport = filter_input(INPUT_GET,'airport',FILTER_SANITIZE_STRING);
+$airport = filter_input(INPUT_GET,'airport',513);
 $Spotter = new Spotter();
 //$spotter_array = $Spotter->getSpotterDataByAirport($airport,"0,1","");
 $airport_array = $Spotter->getAllAirportInfo($airport);

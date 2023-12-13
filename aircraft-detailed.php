@@ -28,10 +28,10 @@ if (!isset($_GET['aircraft_type'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$aircraft_type = filter_input(INPUT_GET,'aircraft_type',FILTER_SANITIZE_STRING);
+	$aircraft_type = filter_input(INPUT_GET,'aircraft_type',513);
 	$page_url = $globalURL.'/aircraft/'.$aircraft_type;
 	
-	$sort = htmlspecialchars(filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING));
+	$sort = htmlspecialchars(filter_input(INPUT_GET,'sort',513));
 	$spotter_array = $Spotter->getSpotterDataByAircraft($aircraft_type,$limit_start.",".$absolute_difference, $sort);
 	
 	$aircraft_info = $Spotter->getAllAircraftInfo($aircraft_type);

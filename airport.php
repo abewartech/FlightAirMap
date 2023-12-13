@@ -7,7 +7,7 @@ require_once('require/class.Stats.php');
 
 if (isset($_POST['airport']))
 {
-	header('Location: '.$globalURL.'/airport/'.filter_input(INPUT_POST,'airport',FILTER_SANITIZE_STRING));
+	header('Location: '.$globalURL.'/airport/'.filter_input(INPUT_POST,'airport',513));
 } else if (isset($_GET['airport'])){
 	$Spotter = new Spotter();
 	//calculuation for the pagination
@@ -30,8 +30,8 @@ if (isset($_POST['airport']))
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$airport = filter_input(INPUT_GET,'airport',FILTER_SANITIZE_STRING);
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$airport = filter_input(INPUT_GET,'airport',513);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	$page_url = $globalURL.'/airport/'.$airport;
 	$airport_array = $Spotter->getAllAirportInfo($airport);
 	

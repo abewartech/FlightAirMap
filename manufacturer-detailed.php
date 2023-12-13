@@ -32,8 +32,8 @@ if (!isset($_GET['aircraft_manufacturer'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$manufacturer = ucwords(str_replace("-", " ", urldecode(filter_input(INPUT_GET,'aircraft_manufacturer',FILTER_SANITIZE_STRING))));
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$manufacturer = ucwords(str_replace("-", " ", urldecode(filter_input(INPUT_GET,'aircraft_manufacturer',513))));
+	$sort = filter_input(INPUT_GET,'sort',513);
 	$page_url = $globalURL.'/manufacturer/'.$manufacturer;
 	
 	if ($sort != '') {

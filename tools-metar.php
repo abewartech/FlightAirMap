@@ -10,7 +10,7 @@ require_once('header.php');
 
 $page_url = $globalURL.'/tools-metar';
 
-$message = filter_input(INPUT_POST,'metar_message',FILTER_SANITIZE_STRING);
+$message = filter_input(INPUT_POST,'metar_message',513);
 
 print '<div class="info column">';
 print '<h1>'._("Parse METAR messages").'</h1>';

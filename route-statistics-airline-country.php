@@ -8,9 +8,9 @@ require_once('require/class.Connection.php');
 require_once('require/class.Spotter.php');
 require_once('require/class.Language.php');
 $Spotter = new Spotter();
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
-$departure_airport = filter_input(INPUT_GET,'departure_airport',FILTER_SANITIZE_STRING);
-$arrival_airport = filter_input(INPUT_GET,'arrival_airport',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
+$departure_airport = filter_input(INPUT_GET,'departure_airport',513);
+$arrival_airport = filter_input(INPUT_GET,'arrival_airport',513);
 $spotter_array = $Spotter->getSpotterDataByRoute($departure_airport, $arrival_airport, "0,1", $sort);
 
 if (!empty($spotter_array))

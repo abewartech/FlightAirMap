@@ -9,7 +9,7 @@ $Satellite = new Satellite();
 <button type="button" class="close">&times;</button>
 <?php
 
-$sat = filter_input(INPUT_GET,'sat',FILTER_SANITIZE_STRING);
+$sat = filter_input(INPUT_GET,'sat',513);
 $sat = urldecode($sat);
 //$info = $Satellite->get_info(str_replace(' ','-',$sat));
 //print_r($info);

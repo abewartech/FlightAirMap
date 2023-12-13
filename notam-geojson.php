@@ -12,10 +12,10 @@ if (isset($_GET['coord']))
 {
 	$coords = explode(',',$_GET['coord']);
 	if (isset($_COOKIE['notamscope']) && $_COOKIE['notamscope'] != '' && $_COOKIE['notamscope'] != 'All') {
-		$scope = filter_var($_COOKIE['notamscope'],FILTER_SANITIZE_STRING);
+		$scope = filter_var($_COOKIE['notamscope'],513);
 		$spotter_array = $NOTAM->getAllNOTAMbyCoordScope($coords,$scope);
 	} elseif (isset($_GET['scope']) && $_GET['scope'] != '' && $_GET['scope'] != 'All') {
-		$scope = filter_input(INPUT_GET,'scope',FILTER_SANITIZE_STRING);
+		$scope = filter_input(INPUT_GET,'scope',513);
 		$spotter_array = $NOTAM->getAllNOTAMbyCoordScope($coords,$scope);
 	} else {
 		$spotter_array = $NOTAM->getAllNOTAMbyCoord($coords);
@@ -23,10 +23,10 @@ if (isset($_GET['coord']))
 //	$spotter_array = $NOTAM->getAllNOTAM();
 } else {
 	if (isset($_COOKIE['notamscope']) && $_COOKIE['notamscope'] != '' && $_COOKIE['notamscope'] != 'All') {
-		$scope = filter_var($_COOKIE['notamscope'],FILTER_SANITIZE_STRING);
+		$scope = filter_var($_COOKIE['notamscope'],513);
 		$spotter_array = $NOTAM->getAllNOTAMbyScope($scope);
 	} elseif (isset($_GET['scope']) && $_GET['scope'] != '' && $_GET['scope'] != 'All') {
-		$scope = filter_input(INPUT_GET,'scope',FILTER_SANITIZE_STRING);
+		$scope = filter_input(INPUT_GET,'scope',513);
 		$spotter_array = $NOTAM->getAllNOTAMbyCoordScope($coords,$scope);
 	} else {
 		$spotter_array = $NOTAM->getAllNOTAM();

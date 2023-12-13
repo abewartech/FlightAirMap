@@ -6,7 +6,7 @@ $ATC = new ATC();
 
 if (isset($_GET['atcid'])) {
 	$atcid = filter_input(INPUT_GET,'atcid',FILTER_SANITIZE_NUMBER_INT);
-	$atcident = filter_input(INPUT_GET,'atcident',FILTER_SANITIZE_STRING);
+	$atcident = filter_input(INPUT_GET,'atcident',513);
 	$atc_data = $ATC->getById($atcid);
 	if (!isset($atc_data[0])) $atc_data = $ATC->getByIdent($atcident);
  ?>

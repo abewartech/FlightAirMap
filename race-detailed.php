@@ -32,9 +32,9 @@ if (!isset($_GET['race'])){
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
 	
-	$race = filter_input(INPUT_GET,'race',FILTER_SANITIZE_STRING);
+	$race = filter_input(INPUT_GET,'race',513);
 	$page_url = $globalURL.'/marine/race/'.$race;
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	$year = filter_input(INPUT_GET,'year',FILTER_SANITIZE_NUMBER_INT);
 	$month = filter_input(INPUT_GET,'month',FILTER_SANITIZE_NUMBER_INT);
 	$race_data = $Marine->getRace($race);

@@ -6,7 +6,7 @@ $Stats = new Stats();
 $title = _("Statistics").' - '._("Most common Aircraft Manufacturer");
 
 if (!isset($filter_name)) $filter_name = '';
-$airline_icao = (string)filter_input(INPUT_GET,'airline',FILTER_SANITIZE_STRING);
+$airline_icao = (string)filter_input(INPUT_GET,'airline',513);
 if ($airline_icao == '' && isset($globalFilter)) {
     if (isset($globalFilter['airline'])) $airline_icao = $globalFilter['airline'][0];
 }

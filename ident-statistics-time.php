@@ -7,8 +7,8 @@ if (!isset($_GET['ident'])) {
 	die();
 }
 $Spotter = new Spotter();
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
-$ident = filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
+$ident = filter_input(INPUT_GET,'ident',513);
 $spotter_array = $Spotter->getSpotterDataByIdent($ident,"0,1", $sort);
 
 if (!empty($spotter_array))

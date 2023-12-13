@@ -54,7 +54,7 @@ if ($type == 'aircraft') print '<p>'._("The table below shows the detailed infor
 elseif ($type == 'marine') print '<p>'._("The table below shows the detailed information of all current vessels.").'</p>';
 elseif ($type == 'tracker') print '<p>'._("The table below shows the detailed information of all current trackers.").'</p>';
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 if ($sort != '') {
 	if ($type == 'aircraft') $spotter_array = $SpotterLive->getLiveSpotterData($limit_start.",".$absolute_difference, $sort);
 	elseif ($type == 'marine') $spotter_array = $MarineLive->getLiveMarineData($limit_start.",".$absolute_difference, $sort);

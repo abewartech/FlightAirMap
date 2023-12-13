@@ -6,7 +6,7 @@ $Spotter = new Spotter();
 
 if (isset($_POST['category']))
 {
-	$category = filter_input(INPUT_POST,'category',FILTER_SANITIZE_STRING);
+	$category = filter_input(INPUT_POST,'category',513);
 	header('Location: '.$globalURL.'/newest/'.$category);
 }
 
@@ -25,7 +25,7 @@ if(!isset($_GET['limit']))
 	$limit_end = $limit_explode[1];
 }
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 
 $absolute_difference = abs($limit_start - $limit_end);
 $limit_next = $limit_end + $absolute_difference;
@@ -36,7 +36,7 @@ if (!isset($_GET['category']))
 {
 	$category = "aircraft";
 } else {
-	$category = filter_input(INPUT_GET,'category',FILTER_SANITIZE_STRING);
+	$category = filter_input(INPUT_GET,'category',513);
 }
 
 $page_url = $globalURL.'/newest/'.$category;

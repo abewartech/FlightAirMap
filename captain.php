@@ -7,7 +7,7 @@ require_once('require/class.Common.php');
 
 if (isset($_POST['captain']))
 {
-	header('Location: '.$globalURL.'/captain/'.filter_input(INPUT_POST,'captain',FILTER_SANITIZE_STRING));
+	header('Location: '.$globalURL.'/captain/'.filter_input(INPUT_POST,'captain',513));
 //} else if (isset($_GET['airport'])){
 } else {
 	$Marine = new Marine();

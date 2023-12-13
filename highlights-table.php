@@ -39,7 +39,7 @@ print '</div>';
 print '<div class="table column">';	
 print '<p>'._("The table below shows the detailed information of all custom selected flights who have special aspects to it, such as unique liveries, destinations etc.").'</p>';
 
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
 if ($sort != '') {
 	$spotter_array = $Spotter->getSpotterDataByHighlight($limit_start.",".$absolute_difference, $sort);
 } else {

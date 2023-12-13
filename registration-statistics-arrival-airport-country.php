@@ -3,8 +3,8 @@ require_once('require/class.Connection.php');
 require_once('require/class.Spotter.php');
 require_once('require/class.Language.php');
 $Spotter = new Spotter();
-$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
-$registration = filter_input(INPUT_GET,'registration',FILTER_SANITIZE_STRING);
+$sort = filter_input(INPUT_GET,'sort',513);
+$registration = filter_input(INPUT_GET,'registration',513);
 if ($registration != '') {
 	$spotter_array = $Spotter->getSpotterDataByRegistration($registration, "0,1", $sort);
 	$aircraft_array = $Spotter->getAircraftInfoByRegistration($registration);

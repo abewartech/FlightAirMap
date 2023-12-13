@@ -170,7 +170,7 @@ class SpotterArchive {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		//$query  = "SELECT spotter_archive.* FROM spotter_archive INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_archive l WHERE l.ident = :ident GROUP BY l.flightaware_id) s on spotter_archive.flightaware_id = s.flightaware_id AND spotter_archive.date = s.maxdate LIMIT 1";
 		$query  = "SELECT spotter_archive.* FROM spotter_archive WHERE ident = :ident ORDER BY date DESC LIMIT 1";
 
@@ -189,7 +189,7 @@ class SpotterArchive {
 	public function getLastArchiveSpotterDataById($id) {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		//$query  = SpotterArchive->$global_query." WHERE spotter_archive.flightaware_id = :id";
 		//$query  = "SELECT spotter_archive.* FROM spotter_archive INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_archive l WHERE l.flightaware_id = :id GROUP BY l.flightaware_id) s on spotter_archive.flightaware_id = s.flightaware_id AND spotter_archive.date = s.maxdate LIMIT 1";
 		$query  = "SELECT * FROM spotter_archive WHERE flightaware_id = :id ORDER BY date DESC LIMIT 1";
@@ -218,7 +218,7 @@ class SpotterArchive {
      */
 	public function getAllArchiveSpotterDataById($id) {
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = $this->global_query." WHERE spotter_archive.flightaware_id = :id ORDER BY date";
 
 //              $spotter_array = Spotter->getDataFromDB($query,array(':id' => $id));
@@ -243,7 +243,7 @@ class SpotterArchive {
      */
 	public function getCoordArchiveSpotterDataById($id) {
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = "SELECT spotter_archive.latitude, spotter_archive.longitude, spotter_archive.date FROM spotter_archive WHERE spotter_archive.flightaware_id = :id ORDER by spotter_archive.date ASC";
 		try {
 			$sth = $this->db->prepare($query);
@@ -266,7 +266,7 @@ class SpotterArchive {
      */
 	public function getCoordArchiveSpotterDataByIdDate($id,$begindate,$enddate) {
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = "SELECT spotter_archive.latitude, spotter_archive.longitude, spotter_archive.date FROM spotter_archive WHERE spotter_archive.flightaware_id = :id AND spotter_archive.date BETWEEN :begindate AND :enddate ORDER by spotter_archive.date ASC";
 		try {
 			$sth = $this->db->prepare($query);
@@ -290,7 +290,7 @@ class SpotterArchive {
 
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = "SELECT spotter_archive.altitude, spotter_archive.date FROM spotter_archive WHERE spotter_archive.ident = :ident AND spotter_archive.latitude <> 0 AND spotter_archive.longitude <> 0 ORDER BY date";
 
 		try {
@@ -315,7 +315,7 @@ class SpotterArchive {
 
 		date_default_timezone_set('UTC');
 
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = "SELECT spotter_archive.altitude, spotter_archive.date FROM spotter_archive WHERE spotter_archive.flightaware_id = :id AND spotter_archive.latitude <> 0 AND spotter_archive.longitude <> 0 ORDER BY date";
 
 		try {
@@ -338,7 +338,7 @@ class SpotterArchive {
      */
 	public function getAltitudeSpeedArchiveSpotterDataById($id) {
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = "SELECT spotter_archive.altitude, spotter_archive.real_altitude,spotter_archive.ground_speed, spotter_archive.date FROM spotter_archive WHERE spotter_archive.flightaware_id = :id ORDER BY date";
 		try {
 			$sth = $this->db->prepare($query);
@@ -359,7 +359,7 @@ class SpotterArchive {
      */
 	public function getLastAltitudeArchiveSpotterDataByIdent($ident) {
 		date_default_timezone_set('UTC');
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = "SELECT spotter_archive.altitude, spotter_archive.date FROM spotter_archive INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_archive l WHERE l.ident = :ident GROUP BY l.flightaware_id) s on spotter_archive.flightaware_id = s.flightaware_id AND spotter_archive.date = s.maxdate LIMIT 1";
 //                $query  = "SELECT spotter_archive.altitude, spotter_archive.date FROM spotter_archive WHERE spotter_archive.ident = :ident";
 		try {
@@ -384,7 +384,7 @@ class SpotterArchive {
      */
 	public function getSpotterArchiveData($ident,$flightaware_id,$date) {
 		$Spotter = new Spotter($this->db);
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = "SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_live l WHERE l.ident = :ident AND l.flightaware_id = :flightaware_id AND l.date LIKE :date GROUP BY l.flightaware_id) s on spotter_live.flightaware_id = s.flightaware_id AND spotter_live.date = s.maxdate";
 		$spotter_array = $Spotter->getDataFromDB($query,array(':ident' => $ident,':flightaware_id' => $flightaware_id,':date' => $date.'%'));
 		return $spotter_array;
@@ -686,7 +686,7 @@ class SpotterArchive {
 		}
 
 		if ($registration != "") {
-			$registration = filter_var($registration,FILTER_SANITIZE_STRING);
+			$registration = filter_var($registration,513);
 			if (!is_string($registration)) {
 				return array();
 			} else {
@@ -695,7 +695,7 @@ class SpotterArchive {
 		}
 
 		if ($aircraft_icao != "") {
-			$aircraft_icao = filter_var($aircraft_icao,FILTER_SANITIZE_STRING);
+			$aircraft_icao = filter_var($aircraft_icao,513);
 			if (!is_string($aircraft_icao)) {
 				return array();
 			} else {
@@ -704,7 +704,7 @@ class SpotterArchive {
 		}
 
 		if ($aircraft_manufacturer != "") {
-			$aircraft_manufacturer = filter_var($aircraft_manufacturer,FILTER_SANITIZE_STRING);
+			$aircraft_manufacturer = filter_var($aircraft_manufacturer,513);
 			if (!is_string($aircraft_manufacturer)) {
 				return array();
 			} else {
@@ -721,7 +721,7 @@ class SpotterArchive {
 		}
 
 		if ($airline_icao != "") {
-			$airline_icao = filter_var($airline_icao,FILTER_SANITIZE_STRING);
+			$airline_icao = filter_var($airline_icao,513);
 			if (!is_string($airline_icao)) {
 				return array();
 			} else {
@@ -730,7 +730,7 @@ class SpotterArchive {
 		}
 
 		if ($airline_country != "") {
-			$airline_country = filter_var($airline_country,FILTER_SANITIZE_STRING);
+			$airline_country = filter_var($airline_country,513);
 			if (!is_string($airline_country)) {
 				return array();
 			} else {
@@ -739,7 +739,7 @@ class SpotterArchive {
 		}
 
 		if ($airline_type != "") {
-			$airline_type = filter_var($airline_type,FILTER_SANITIZE_STRING);
+			$airline_type = filter_var($airline_type,513);
 			if (!is_string($airline_type)) {
 				return array();
 			} else {
@@ -756,7 +756,7 @@ class SpotterArchive {
 		}
 
 		if ($airport != "") {
-			$airport = filter_var($airport,FILTER_SANITIZE_STRING);
+			$airport = filter_var($airport,513);
 			if (!is_string($airport)) {
 				return array();
 			} else {
@@ -765,7 +765,7 @@ class SpotterArchive {
 		}
 
 		if ($airport_country != "") {
-			$airport_country = filter_var($airport_country,FILTER_SANITIZE_STRING);
+			$airport_country = filter_var($airport_country,513);
 			if (!is_string($airport_country)) {
 				return array();
 			} else {
@@ -774,7 +774,7 @@ class SpotterArchive {
 		}
 
 		if ($callsign != "") {
-			$callsign = filter_var($callsign,FILTER_SANITIZE_STRING);
+			$callsign = filter_var($callsign,513);
 			if (!is_string($callsign)) {
 				return array();
 			} else {
@@ -789,7 +789,7 @@ class SpotterArchive {
 		}
 
 		if ($owner != "") {
-			$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+			$owner = filter_var($owner,513);
 			if (!is_string($owner)) {
 				return array();
 			} else {
@@ -798,7 +798,7 @@ class SpotterArchive {
 		}
 
 		if ($pilot_name != "") {
-			$pilot_name = filter_var($pilot_name,FILTER_SANITIZE_STRING);
+			$pilot_name = filter_var($pilot_name,513);
 			if (!is_string($pilot_name)) {
 				return array();
 			} else {
@@ -816,7 +816,7 @@ class SpotterArchive {
 		}
 
 		if ($departure_airport_route != "") {
-			$departure_airport_route = filter_var($departure_airport_route,FILTER_SANITIZE_STRING);
+			$departure_airport_route = filter_var($departure_airport_route,513);
 			if (!is_string($departure_airport_route)) {
 				return array();
 			} else {
@@ -825,7 +825,7 @@ class SpotterArchive {
 		}
 
 		if ($arrival_airport_route != "") {
-			$arrival_airport_route = filter_var($arrival_airport_route,FILTER_SANITIZE_STRING);
+			$arrival_airport_route = filter_var($arrival_airport_route,513);
 			if (!is_string($arrival_airport_route)) {
 				return array();
 			} else {
@@ -852,8 +852,8 @@ class SpotterArchive {
 
 		if ($date_posted != "") {
 			$date_array = explode(",", $date_posted);
-			$date_array[0] = filter_var($date_array[0],FILTER_SANITIZE_STRING);
-			$date_array[1] = filter_var($date_array[1],FILTER_SANITIZE_STRING);
+			$date_array[0] = filter_var($date_array[0],513);
+			$date_array[1] = filter_var($date_array[1],513);
 			if ($globalTimezone != '') {
 				date_default_timezone_set($globalTimezone);
 				$datetime = new DateTime();
@@ -1190,7 +1190,7 @@ class SpotterArchive {
 	public function countAllAircraftTypesByOwner($owner,$filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.aircraft_icao, COUNT(spotter_archive_output.aircraft_icao) AS aircraft_icao_count, spotter_archive_output.aircraft_name, spotter_archive_output.aircraft_manufacturer 
 		    FROM spotter_archive_output".$filter_query." spotter_archive_output.owner_name = :owner";
 		$query_values = array();
@@ -1211,7 +1211,7 @@ class SpotterArchive {
      */
 	public function countAllAirlinesByOwner($owner,$filters = array())
 	{
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$filter_query = $this->getFilter($filters,true,true);
 		$query  = "SELECT DISTINCT spotter_archive_output.airline_name, spotter_archive_output.airline_icao, spotter_archive_output.airline_country, COUNT(spotter_archive_output.airline_name) AS airline_count
 		    FROM spotter_archive_output".$filter_query." spotter_archive_output.owner_name = :owner  
@@ -1233,7 +1233,7 @@ class SpotterArchive {
 	public function countAllArrivalAirportCountriesByOwner($owner, $filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.arrival_airport_country, COUNT(spotter_archive_output.arrival_airport_country) AS airport_arrival_country_count, countries.iso3 AS airport_arrival_country_iso3 
 		    FROM countries, spotter_archive_output".$filter_query." spotter_archive_output.arrival_airport_country <> '' AND spotter_archive_output.owner_name = :owner AND countries.name = spotter_archive_output.arrival_airport_country 
 		    GROUP BY spotter_archive_output.arrival_airport_country, countries.iso3
@@ -1253,7 +1253,7 @@ class SpotterArchive {
 	public function countAllArrivalAirportsByOwner($owner,$filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.arrival_airport_icao, COUNT(spotter_archive_output.arrival_airport_icao) AS airport_arrival_icao_count, spotter_archive_output.arrival_airport_name, spotter_archive_output.arrival_airport_city, spotter_archive_output.arrival_airport_country 
 		    FROM spotter_archive_output".$filter_query." spotter_archive_output.arrival_airport_name <> '' AND spotter_archive_output.arrival_airport_icao <> 'NA' AND spotter_archive_output.arrival_airport_icao <> '' AND spotter_archive_output.owner_name = :owner 
 		    GROUP BY spotter_archive_output.arrival_airport_icao, spotter_archive_output.arrival_airport_name, spotter_archive_output.arrival_airport_city, spotter_archive_output.arrival_airport_country
@@ -1284,7 +1284,7 @@ class SpotterArchive {
 	public function countAllDepartureAirportCountriesByOwner($owner,$filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.departure_airport_country, COUNT(spotter_archive_output.departure_airport_country) AS airport_departure_country_count, countries.iso3 AS airport_departure_country_iso3
 		    FROM spotter_archive_output,countries".$filter_query." spotter_archive_output.departure_airport_country <> '' AND spotter_archive_output.owner_name = :owner  AND countries.name = spotter_archive_output.departure_airport_country 
 		    GROUP BY spotter_archive_output.departure_airport_country, countries.iso3
@@ -1304,7 +1304,7 @@ class SpotterArchive {
 	public function countAllDepartureAirportsByOwner($owner,$filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.departure_airport_icao, COUNT(spotter_archive_output.departure_airport_icao) AS airport_departure_icao_count, spotter_archive_output.departure_airport_name, spotter_archive_output.departure_airport_city, spotter_archive_output.departure_airport_country, airport.latitude, airport.longitude 
 		    FROM spotter_archive_output,airport".$filter_query." spotter_archive_output.departure_airport_name <> '' AND spotter_archive_output.departure_airport_icao <> 'NA' AND spotter_archive_output.departure_airport_icao <> '' AND spotter_archive_output.owner_name = :owner AND airport.icao = spotter_archive_output.departure_airport_icao 
 		    GROUP BY spotter_archive_output.departure_airport_icao, spotter_archive_output.departure_airport_name, spotter_archive_output.departure_airport_city, spotter_archive_output.departure_airport_country, airport.latitude, airport.longitude
@@ -1337,7 +1337,7 @@ class SpotterArchive {
 	public function countAllAircraftManufacturerByOwner($owner,$filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.aircraft_manufacturer, COUNT(spotter_archive_output.aircraft_manufacturer) AS aircraft_manufacturer_count  
 		    FROM spotter_archive_output".$filter_query." spotter_archive_output.aircraft_manufacturer <> '' AND spotter_archive_output.owner_name = :owner";
 		$query_values = array();
@@ -1360,7 +1360,7 @@ class SpotterArchive {
 	{
 		$filter_query = $this->getFilter($filters,true,true);
 		$Image = new Image($this->db);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT spotter_archive_output.aircraft_icao, COUNT(spotter_archive_output.registration) AS registration_count, spotter_archive_output.aircraft_name, spotter_archive_output.aircraft_manufacturer, spotter_archive_output.registration, spotter_archive_output.airline_name  
 		    FROM spotter_archive_output".$filter_query." spotter_archive_output.registration <> '' AND spotter_archive_output.owner_name = :owner";
 		$query_values = array();
@@ -1401,7 +1401,7 @@ class SpotterArchive {
 	public function countAllRoutesByOwner($owner,$filters = array())
 	{
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		$query  = "SELECT DISTINCT concat(spotter_archive_output.departure_airport_icao, ' - ',  spotter_archive_output.arrival_airport_icao) AS route, count(concat(spotter_archive_output.departure_airport_icao, ' - ', spotter_archive_output.arrival_airport_icao)) AS route_count, spotter_archive_output.departure_airport_icao, spotter_archive_output.departure_airport_name AS airport_departure_name, spotter_archive_output.departure_airport_city AS airport_departure_city, spotter_archive_output.departure_airport_country AS airport_departure_country, spotter_archive_output.arrival_airport_icao, spotter_archive_output.arrival_airport_name AS airport_arrival_name, spotter_archive_output.arrival_airport_city AS airport_arrival_city, spotter_archive_output.arrival_airport_country AS airport_arrival_country
 		    FROM spotter_archive_output".$filter_query." spotter_archive_output.ident <> '' AND spotter_archive_output.owner_name = :owner 
 		    GROUP BY route, spotter_archive_output.departure_airport_icao, spotter_archive_output.departure_airport_name, spotter_archive_output.departure_airport_city, spotter_archive_output.departure_airport_country, spotter_archive_output.arrival_airport_icao, spotter_archive_output.arrival_airport_name, spotter_archive_output.arrival_airport_city, spotter_archive_output.arrival_airport_country
@@ -1437,7 +1437,7 @@ class SpotterArchive {
 	{
 		global $globalTimezone, $globalDBdriver;
 		$filter_query = $this->getFilter($filters,true,true);
-		$owner = filter_var($owner,FILTER_SANITIZE_STRING);
+		$owner = filter_var($owner,513);
 		if ($globalTimezone != '') {
 			date_default_timezone_set($globalTimezone);
 			$datetime = new DateTime();
@@ -1477,7 +1477,7 @@ class SpotterArchive {
 	public function getDateArchiveSpotterDataById($id,$date) {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = 'SELECT spotter_archive.* FROM spotter_archive INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_archive l WHERE l.flightaware_id = :id AND l.date <= :date GROUP BY l.flightaware_id) s on spotter_archive.flightaware_id = s.flightaware_id AND spotter_archive.date = s.maxdate ORDER BY spotter_archive.date DESC';
 		$date = date('c',$date);
 		$spotter_array = $Spotter->getDataFromDB($query,array(':id' => $id,':date' => $date));
@@ -1494,7 +1494,7 @@ class SpotterArchive {
 	public function getDateArchiveSpotterDataByIdent($ident,$date) {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = 'SELECT spotter_archive.* FROM spotter_archive INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_archive l WHERE l.ident = :ident AND l.date <= :date GROUP BY l.flightaware_id) s on spotter_archive.flightaware_id = s.flightaware_id AND spotter_archive.date = s.maxdate ORDER BY spotter_archive.date DESC';
 		$date = date('c',$date);
 		$spotter_array = $Spotter->getDataFromDB($query,array(':ident' => $ident,':date' => $date));

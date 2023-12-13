@@ -13,7 +13,7 @@ $Common = new Common();
 
 $from_archive = false;
 if (isset($_GET['ident'])) {
-	$ident = urldecode(filter_input(INPUT_GET,'ident',FILTER_SANITIZE_STRING));
+	$ident = urldecode(filter_input(INPUT_GET,'ident',513));
 	if (isset($_GET['currenttime'])) {
 		$currenttime = filter_input(INPUT_GET,'currenttime',FILTER_SANITIZE_NUMBER_INT);
 		$currenttime = round($currenttime/1000);
@@ -32,7 +32,7 @@ if (isset($_GET['ident'])) {
 	}
 }
 if (isset($_GET['famtrackid'])) {
-	$famtrackid = urldecode(filter_input(INPUT_GET,'famtrackid',FILTER_SANITIZE_STRING));
+	$famtrackid = urldecode(filter_input(INPUT_GET,'famtrackid',513));
 	if (isset($_GET['currenttime'])) {
 		$currenttime = filter_input(INPUT_GET,'currenttime',FILTER_SANITIZE_NUMBER_INT);
 		$currenttime = round($currenttime/1000);

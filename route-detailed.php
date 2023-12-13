@@ -27,10 +27,10 @@ if (!isset($_GET['departure_airport']) || !isset($_GET['arrival_airport'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$departure_airport = filter_input(INPUT_GET,'departure_airport',FILTER_SANITIZE_STRING);
-	$arrival_airport = filter_input(INPUT_GET,'arrival_airport',FILTER_SANITIZE_STRING);
+	$departure_airport = filter_input(INPUT_GET,'departure_airport',513);
+	$arrival_airport = filter_input(INPUT_GET,'arrival_airport',513);
 	$page_url = $globalURL.'/route/'.$departure_airport.'/'.$arrival_airport;
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	if ($sort != '') {
 		$spotter_array = $Spotter->getSpotterDataByRoute($departure_airport, $arrival_airport, $limit_start.",".$absolute_difference, $sort);
 	} else {

@@ -5,7 +5,7 @@ require_once('require/class.Language.php');
 
 if ($_POST['registration'] != "")
 {
-	$registration = filter_input(INPUT_POST,'registration',FILTER_SANITIZE_STRING);
+	$registration = filter_input(INPUT_POST,'registration',513);
 	header('Location: '.$globalURL.'/registration/'.$registration);
 } else {
 	if ($globalURL == '') {

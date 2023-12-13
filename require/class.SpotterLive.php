@@ -265,7 +265,7 @@ class SpotterLive {
 			$maxlat = filter_var($coord[3],FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 			if ($minlong != '' && $minlat != '' && $maxlong != '' && $maxlat != '') $usecoord = true;
 		}
-		$id = filter_var($id,FILTER_SANITIZE_STRING);
+		$id = filter_var($id,513);
 		$filter_query = $this->getFilter($filter,true,true);
 
 		if (!isset($globalLiveInterval) || $globalLiveInterval == '') $globalLiveInterval = '200';
@@ -366,7 +366,7 @@ class SpotterLive {
 	{
 		global $globalDBdriver, $globalLiveInterval, $globalArchive, $globalMap3DAircraftsLimit;
 		date_default_timezone_set('UTC');
-		$id = filter_var($id,FILTER_SANITIZE_STRING);
+		$id = filter_var($id,513);
 		$filter_query = $this->getFilter($filter,true,true);
 
 		if (!isset($globalLiveInterval) || $globalLiveInterval == '') $globalLiveInterval = '200';
@@ -657,7 +657,7 @@ class SpotterLive {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_live l WHERE l.ident = :ident GROUP BY l.flightaware_id) s on spotter_live.flightaware_id = s.flightaware_id AND spotter_live.date = s.maxdate ORDER BY spotter_live.date DESC';
 
 		$spotter_array = $Spotter->getDataFromDB($query,array(':ident' => $ident),'',true);
@@ -677,7 +677,7 @@ class SpotterLive {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_live l WHERE l.ident = :ident AND l.date <= :date GROUP BY l.flightaware_id) s on spotter_live.flightaware_id = s.flightaware_id AND spotter_live.date = s.maxdate ORDER BY spotter_live.date DESC';
 
                 $date = date('c',$date);
@@ -696,7 +696,7 @@ class SpotterLive {
 	{
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = 'SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_live l WHERE l.flightaware_id = :id GROUP BY l.flightaware_id) s on spotter_live.flightaware_id = s.flightaware_id AND spotter_live.date = s.maxdate ORDER BY spotter_live.date DESC';
 		$spotter_array = $Spotter->getDataFromDB($query,array(':id' => $id),'',true);
 		return $spotter_array;
@@ -714,7 +714,7 @@ class SpotterLive {
 		$Spotter = new Spotter($this->db);
 		date_default_timezone_set('UTC');
 
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = 'SELECT spotter_live.* FROM spotter_live INNER JOIN (SELECT l.flightaware_id, max(l.date) as maxdate FROM spotter_live l WHERE l.flightaware_id = :id AND l.date <= :date GROUP BY l.flightaware_id) s on spotter_live.flightaware_id = s.flightaware_id AND spotter_live.date = s.maxdate ORDER BY spotter_live.date DESC';
 		$date = date('c',$date);
 		$spotter_array = $Spotter->getDataFromDB($query,array(':id' => $id,':date' => $date),'',true);
@@ -732,7 +732,7 @@ class SpotterLive {
 
 		date_default_timezone_set('UTC');
 
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
                 $query  = 'SELECT spotter_live.altitude, spotter_live.date FROM spotter_live WHERE spotter_live.ident = :ident';
 
     		try {
@@ -759,7 +759,7 @@ class SpotterLive {
 	{
 		global $globalDBdriver, $globalLiveInterval;
 		date_default_timezone_set('UTC');
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		//$query  = self::$global_query.' WHERE spotter_live.flightaware_id = :id ORDER BY date';
 		if ($globalDBdriver == 'mysql') {
 			$query = 'SELECT spotter_live.* FROM spotter_live WHERE spotter_live.flightaware_id = :id';
@@ -791,7 +791,7 @@ class SpotterLive {
 	public function getAllLiveSpotterDataByIdent($ident)
 	{
 		date_default_timezone_set('UTC');
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = self::$global_query.' WHERE spotter_live.ident = :ident';
     		try {
 			
@@ -940,7 +940,7 @@ class SpotterLive {
      */
 	public function deleteLiveSpotterDataByIdent($ident)
 	{
-		$ident = filter_var($ident, FILTER_SANITIZE_STRING);
+		$ident = filter_var($ident, 513);
 		$query  = 'DELETE FROM spotter_live WHERE ident = :ident';
         
     		try {
@@ -962,7 +962,7 @@ class SpotterLive {
      */
 	public function deleteLiveSpotterDataById($id)
 	{
-		$id = filter_var($id, FILTER_SANITIZE_STRING);
+		$id = filter_var($id, 513);
 		$query  = 'DELETE FROM spotter_live WHERE flightaware_id = :id';
         
     		try {
@@ -1128,7 +1128,7 @@ class SpotterLive {
 			} else {
 				$q_array = explode(" ", $q);
 				foreach ($q_array as $q_item){
-					$q_item = filter_var($q_item,FILTER_SANITIZE_STRING);
+					$q_item = filter_var($q_item,513);
 					$additional_query .= " AND (";
 					$additional_query .= "(spotter_live.aircraft_icao like '%".$q_item."%') OR ";
 					$additional_query .= "(spotter_live.aircraft_name like '%".$q_item."%') OR ";
@@ -1289,26 +1289,26 @@ class SpotterLive {
 		if ($date == '') $date = date("Y-m-d H:i:s", time());
 
         
-		$flightaware_id = filter_var($flightaware_id,FILTER_SANITIZE_STRING);
-		$ident = filter_var($ident,FILTER_SANITIZE_STRING);
-		$aircraft_icao = filter_var($aircraft_icao,FILTER_SANITIZE_STRING);
-		$departure_airport_icao = filter_var($departure_airport_icao,FILTER_SANITIZE_STRING);
-		$arrival_airport_icao = filter_var($arrival_airport_icao,FILTER_SANITIZE_STRING);
+		$flightaware_id = filter_var($flightaware_id,513);
+		$ident = filter_var($ident,513);
+		$aircraft_icao = filter_var($aircraft_icao,513);
+		$departure_airport_icao = filter_var($departure_airport_icao,513);
+		$arrival_airport_icao = filter_var($arrival_airport_icao,513);
 		$latitude = filter_var($latitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$longitude = filter_var($longitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
-		$waypoints = filter_var($waypoints,FILTER_SANITIZE_STRING);
+		$waypoints = filter_var($waypoints,513);
 		$altitude = filter_var($altitude,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$altitude_real = filter_var($altitude_real,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$heading = filter_var($heading,FILTER_SANITIZE_NUMBER_INT);
 		$groundspeed = filter_var($groundspeed,FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION);
 		$squawk = filter_var($squawk,FILTER_SANITIZE_NUMBER_INT);
-		$route_stop = filter_var($route_stop,FILTER_SANITIZE_STRING);
-		$ModeS = filter_var($ModeS,FILTER_SANITIZE_STRING);
-		$pilot_id = filter_var($pilot_id,FILTER_SANITIZE_STRING);
-		$pilot_name = filter_var($pilot_name,FILTER_SANITIZE_STRING);
-		$format_source = filter_var($format_source,FILTER_SANITIZE_STRING);
-		$source_name = filter_var($source_name,FILTER_SANITIZE_STRING);
-		$over_country = filter_var($over_country,FILTER_SANITIZE_STRING);
+		$route_stop = filter_var($route_stop,513);
+		$ModeS = filter_var($ModeS,513);
+		$pilot_id = filter_var($pilot_id,513);
+		$pilot_name = filter_var($pilot_name,513);
+		$format_source = filter_var($format_source,513);
+		$source_name = filter_var($source_name,513);
+		$over_country = filter_var($over_country,513);
 		$verticalrate = filter_var($verticalrate,FILTER_SANITIZE_NUMBER_INT);
 
 		$airline_name = '';

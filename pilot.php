@@ -7,7 +7,7 @@ require_once('require/class.Common.php');
 
 if (isset($_POST['pilot']))
 {
-	header('Location: '.$globalURL.'/pilot/'.filter_input(INPUT_POST,'pilot',FILTER_SANITIZE_STRING));
+	header('Location: '.$globalURL.'/pilot/'.filter_input(INPUT_POST,'pilot',513));
 //} else if (isset($_GET['airport'])){
 } else {
 	$Spotter= new Spotter();

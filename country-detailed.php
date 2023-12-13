@@ -32,10 +32,10 @@ if (!isset($_GET['country'])){
 	$limit_previous_1 = $limit_start - $absolute_difference;
 	$limit_previous_2 = $limit_end - $absolute_difference;
 	
-	$country = ucwords(str_replace("-", " ", urldecode(filter_input(INPUT_GET,'country',FILTER_SANITIZE_STRING))));
+	$country = ucwords(str_replace("-", " ", urldecode(filter_input(INPUT_GET,'country',513))));
 	
 	$page_url = $globalURL.'/country/'.$_GET['country'];
-	$sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_STRING);
+	$sort = filter_input(INPUT_GET,'sort',513);
 	if ($country == 'Na') {
 		$spotter_array = array();
 	} else {

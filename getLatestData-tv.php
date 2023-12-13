@@ -5,7 +5,7 @@ require_once('require/class.SpotterLive.php');
 require_once('require/class.Language.php');
 
 header('Content-Type: text/javascript');
-$q = filter_input(INPUT_GET,'q',FILTER_SANITIZE_STRING);
+$q = filter_input(INPUT_GET,'q',513);
 $SpotterLive = new SpotterLive();
 $spotter_array = $SpotterLive->getRealTimeData($q);
 
