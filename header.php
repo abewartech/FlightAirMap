@@ -112,7 +112,9 @@ if (strtolower($current_page) == "index")
 		if (file_exists(dirname(__FILE__).'/js/Cesium/Cesium.js')) {
 		// || isset($globalOffline) && $globalOffline) {
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.112.0/Widgets/widgets.min.css" integrity="sha512-B5b+YSvAqAIXLgYMg42Tc9KmdoYyGQt2G13igHZaDPitOzeO6hUsMkz8uhNg24eRbPcTivMcQ55/FhyxzcCFVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="<?php print $globalURL; ?>/js/Cesium/Widgets/widgets.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.112.0/Cesium.js" integrity="sha512-QXnLIJbiUYAGVL5s+obVZWfV8zMdDgDmTmev7txcXRjMsjj5cNbdAkzrVa2WIbQIkJqy7eahCr+2NOFqVwRIcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="<?php print $globalURL; ?>/js/Cesium/Cesium.js"></script>
 <?php
 		} else {

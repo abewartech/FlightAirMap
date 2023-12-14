@@ -1,6 +1,6 @@
 <?php
 //INSTALLED OR NOT ?
-$globalInstalled = FALSE;
+$globalInstalled = TRUE;
 
 //GLOBAL SITE NAME
 $globalName = 'flightair';
@@ -181,7 +181,7 @@ $globalSourcesTimeOut = '15';
 $globalSourcesupdate = '10'; //Put data in DB after xx seconds/flight
 
 //DATA SOURCES
-$globalSources = array(array('host' => '127.0.0.1','port' => '30003','name' => '','format' => 'auto','sourcestats' => FALSE,'noarchive' => FALSE,'timezone' => 'UTC','callback' => FALSE));
+$globalSources = array(array('host' => '103.140.130.124','port' => '7780','name' => 'Merak','format' => 'ais','sourcestats' => TRUE,'noarchive' => FALSE,'timezone' => 'UTC','callback' => FALSE));
 // ^^ in the form array(array(host => 'host1', 'port' => 'port1','name' => 'first source','format' => 'sbs'),array('host' => 'host2', 'port' => 'port2','name' => 'Other source', 'format' => 'aprs'),array('host' => 'http://xxxxx/whazzup.txt'),array('host' => '123.123.123.123', 'name' => 'external', 'callback' => TRUE,'format' => 'hidnseek')); Use only sources you have the rights for.
 
 //ACARS Listen in UDP
