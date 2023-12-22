@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `marine_live` (
   `status` varchar(255) DEFAULT NULL,
   `status_id` int(11) DEFAULT NULL,
   `over_country` varchar(255) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT 0,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   `heading` int(11) NOT NULL,

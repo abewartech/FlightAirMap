@@ -181,9 +181,32 @@ $globalSourcesTimeOut = '15';
 $globalSourcesupdate = '10'; //Put data in DB after xx seconds/flight
 
 //DATA SOURCES
-$globalSources = array(array('host' => '103.140.130.124','port' => '7780','name' => 'Merak','format' => 'ais','sourcestats' => TRUE,'noarchive' => FALSE,'timezone' => 'UTC','callback' => FALSE));
+// $globalSources = array(array('host' => '103.140.130.124','port' => '7780','name' => 'Merak','format' => 'ais','sourcestats' => TRUE,'noarchive' => FALSE,'timezone' => 'UTC','callback' => FALSE));
 // ^^ in the form array(array(host => 'host1', 'port' => 'port1','name' => 'first source','format' => 'sbs'),array('host' => 'host2', 'port' => 'port2','name' => 'Other source', 'format' => 'aprs'),array('host' => 'http://xxxxx/whazzup.txt'),array('host' => '123.123.123.123', 'name' => 'external', 'callback' => TRUE,'format' => 'hidnseek')); Use only sources you have the rights for.
 
+// DATA SOURCES
+$globalSources = array(
+    array(
+        'host' => '103.140.130.124',
+        'port' => '7780',
+        'name' => 'Merak',
+        'format' => 'ais',
+        'sourcestats' => TRUE,
+        'noarchive' => FALSE,
+        'timezone' => 'UTC',
+        'callback' => FALSE
+    ),
+    array(
+        'host' => '103.176.181.36',
+        'port' => '8210',
+        'name' => 'bali',
+        'format' => 'ais',  // Assuming the format for the new source is TCP
+        'sourcestats' => TRUE,
+        'noarchive' => FALSE,
+        'timezone' => 'UTC',
+        'callback' => FALSE
+    )
+);
 //ACARS Listen in UDP
 $globalACARS = FALSE;
 $globalACARSHost = '0.0.0.0'; // Local IP to listen
@@ -263,7 +286,7 @@ $globalArchiveKeepMonths = '0';
 $globalDeleteLastYearStats = FALSE;
 
 //Calculate height of the geoid above the WGS84 ellipsoid (for source that give altitude based on AMSL)
-$globalGeoid = TRUE;
+$globalGeoid = FALSE;
 $globalGeoidSource = 'egm96-15';
 
 //NOTAM
