@@ -1,1 +1,86 @@
-[{"id":"72565ee8b39c7925","type":"tab","label":"Flow 3","disabled":false,"info":""},{"id":"db84ce0d5d24b360","type":"cronplus","z":"72565ee8b39c7925","d":true,"name":"","outputField":"payload","timeZone":"","storeName":"","commandResponseMsgOutput":"output1","defaultLocation":"","defaultLocationType":"default","outputs":1,"options":[{"name":"schedule1","topic":"topic1","payloadType":"str","payload":"C:\\laragon\\bin\\php\\php-8.3.0-Win32-vs16-x64\\php.exe C:\\Users\\userlaptop\\Documents\\projects\\abe\\FlightAirMap\\scripts\\daemon-spotter.php","expressionType":"cron","expression":"0 * * * * *","location":"","offset":"0","solarType":"all","solarEvents":"sunrise,sunset"}],"x":260,"y":100,"wires":[["ef154227f2aec071"]]},{"id":"ef154227f2aec071","type":"exec","z":"72565ee8b39c7925","command":"","addpay":"payload","append":"","useSpawn":"false","timer":"","winHide":false,"oldrc":false,"name":"","x":430,"y":100,"wires":[["f416dbdef058d2f3"],["f416dbdef058d2f3"],["f416dbdef058d2f3"]]},{"id":"f416dbdef058d2f3","type":"debug","z":"72565ee8b39c7925","name":"debug 36","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","statusVal":"","statusType":"auto","x":600,"y":100,"wires":[]}]
+[
+  {
+    "id": "72565ee8b39c7925",
+    "type": "tab",
+    "label": "Flow 3",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "db84ce0d5d24b360",
+    "type": "cronplus",
+    "z": "72565ee8b39c7925",
+    "d": true,
+    "name": "",
+    "outputField": "payload",
+    "timeZone": "",
+    "storeName": "",
+    "commandResponseMsgOutput": "output1",
+    "defaultLocation": "",
+    "defaultLocationType": "default",
+    "outputs": 1,
+    "options": [
+      {
+        "name": "schedule1",
+        "topic": "topic1",
+        "payloadType": "str",
+        "payload": "C:\\laragon\\bin\\php\\php-8.3.0-Win32-vs16-x64\\php.exe C:\\Users\\userlaptop\\Documents\\projects\\abe\\FlightAirMap\\scripts\\daemon-spotter.php",
+        "expressionType": "cron",
+        "expression": "0 * * * * *",
+        "location": "",
+        "offset": "0",
+        "solarType": "all",
+        "solarEvents": "sunrise,sunset"
+      }
+    ],
+    "x": 260,
+    "y": 100,
+    "wires": [
+      [
+        "ef154227f2aec071"
+      ]
+    ]
+  },
+  {
+    "id": "ef154227f2aec071",
+    "type": "exec",
+    "z": "72565ee8b39c7925",
+    "command": "",
+    "addpay": "payload",
+    "append": "",
+    "useSpawn": "false",
+    "timer": "",
+    "winHide": false,
+    "oldrc": false,
+    "name": "",
+    "x": 430,
+    "y": 100,
+    "wires": [
+      [
+        "f416dbdef058d2f3"
+      ],
+      [
+        "f416dbdef058d2f3"
+      ],
+      [
+        "f416dbdef058d2f3"
+      ]
+    ]
+  },
+  {
+    "id": "f416dbdef058d2f3",
+    "type": "debug",
+    "z": "72565ee8b39c7925",
+    "name": "debug 36",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 100,
+    "wires": []
+  }
+]
